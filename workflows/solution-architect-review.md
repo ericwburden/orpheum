@@ -24,6 +24,7 @@ Review drafted architecture artifacts, record explicit findings and readiness, a
 
 - Primary artifact type: an instantiated copy of [`artifacts/architecture-review.md`](D:/Projects/agoge/artifacts/architecture-review.md) in the target project workspace
 - Secondary outputs: explicit readiness status, key findings, required remediation, interface or contract concerns, and review-based next steps
+- Secondary outputs: explicit readiness status, decision ownership, condition ownership, key findings, required remediation, interface or contract concerns, and review-based next steps
 
 ## Skills And Tools
 
@@ -38,7 +39,7 @@ Review drafted architecture artifacts, record explicit findings and readiness, a
 2. If workshop notes or design-session transcripts exist, normalize them with `meeting-notes-and-actions` before drafting the review.
 3. If local technical context or external comparison material still needs synthesis, use `research-documentation` or `content-research-writer` first.
 4. Instantiate [`artifacts/architecture-review.md`](D:/Projects/agoge/artifacts/architecture-review.md) into the project workspace if a working copy does not already exist.
-5. Use `architecture-review` to populate the review artifact with review scope, reviewed inputs, overall assessment, readiness status, key findings, interface or contract observations, unresolved risks, remediation routing, and the recommended next step.
+5. Use `architecture-review` to populate the review artifact with review scope, reviewed inputs, overall assessment, readiness status, decision ownership, key findings, interface or contract observations, unresolved risks, remediation routing, condition ownership when needed, and the recommended next step.
 6. Run [`solution-architecture.check.md`](D:/Projects/agoge/checks/solution-architecture.check.md), [`architecture-decisions.check.md`](D:/Projects/agoge/checks/architecture-decisions.check.md), [`architecture-review.check.md`](D:/Projects/agoge/checks/architecture-review.check.md), [`architecture-traceability.check.md`](D:/Projects/agoge/checks/architecture-traceability.check.md), and [`solution-architect-boundary.check.md`](D:/Projects/agoge/checks/solution-architect-boundary.check.md).
 
 ## Decision Points

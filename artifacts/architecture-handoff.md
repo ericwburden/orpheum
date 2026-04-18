@@ -38,6 +38,10 @@ List the interface seams, ownership boundaries, integrations, external dependenc
 
 Identify the architectural assumptions, risk areas, or boundary conditions that verification work should pay particular attention to.
 
+## Architecture Fitness Criteria
+
+Summarize the architecture-level criteria that downstream verification or planning should preserve, validate, or monitor.
+
 ## Unresolved Decisions And Risks
 
 List unresolved architectural decisions, significant risks, and tradeoffs still in play.

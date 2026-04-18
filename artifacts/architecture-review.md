@@ -40,6 +40,12 @@ State whether the architecture is:
 
 If relevant, note who or what must confirm the next step.
 
+## Decision Owner Or Approver
+
+Identify who owns the readiness decision or approval for this architecture package.
+
+If the status is `ready with conditions` or `blocked pending remediation`, this section should be explicit rather than implied.
+
 ## Key Findings
 
 Record the most important findings, grouped by artifact, design area, or defect type.
@@ -55,6 +61,10 @@ List unresolved risks, open technical questions, or architectural uncertainties 
 ## Required Remediation
 
 Describe the changes needed before the architecture should be treated as downstream-ready, and point back to the earliest artifact that should be reworked.
+
+## Condition Owners
+
+If the architecture is conditionally ready or blocked, identify who owns each required follow-up, clarification, or approval condition.
 
 ## Recommended Next Step
 

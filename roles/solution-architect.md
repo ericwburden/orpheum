@@ -11,6 +11,7 @@ This role exists to reduce ambiguity between business discovery and technical ex
 - The solution shape is traceable to business objectives, process needs, and verified requirements.
 - System boundaries, component responsibilities, integrations, and major flows are explicit.
 - Architectural decisions are recorded with rationale and tradeoffs rather than implied.
+- Architecture fitness criteria are explicit enough that downstream verification can test whether the design is succeeding.
 - Architecture review findings and readiness are explicit before architecture is handed downstream.
 - Risks, constraints, unresolved decisions, and dependency hotspots are surfaced early.
 - Downstream roles can continue into planning, implementation, and verification without rediscovering the architecture.
@@ -25,6 +26,7 @@ This role exists to reduce ambiguity between business discovery and technical ex
 - Define important interface seams, contract expectations, and ownership boundaries where downstream work could otherwise drift.
 - Evaluate architectural options and record why a direction was chosen.
 - Review the architecture explicitly before packaging it for downstream use.
+- Make readiness ownership, required approvals, and conditional follow-up explicit when the architecture is not simply ready.
 - Surface architectural risks, unresolved tradeoffs, and areas that require downstream decision-making.
 - Record trust boundaries, control points, and human-oversight implications when AI-enabled or agentic behavior is relevant.
 - Prepare a downstream architectural handoff for planning, implementation, and verification roles.
@@ -85,12 +87,21 @@ Do not use architecture work to redefine already-stabilized behavioral specifica
 
 Treat Allium or other behavioral specs as input constraints when they already exist. If architecture work reveals missing or unstable behavioral definition, route that gap back to upstream discovery or specification work rather than silently patching it inside the architecture.
 
+When architecture work needs specification-specific support, use the installed Allium skills rather than inventing a repo-specific replacement:
+
+- [`allium`](C:/Users/ericw/.codex/skills/allium/SKILL.md) for general spec-aware work
+- [`tend`](C:/Users/ericw/.codex/skills/allium/skills/tend/SKILL.md) when an existing behavioral spec needs clarification or refinement
+- [`elicit`](C:/Users/ericw/.codex/skills/allium/skills/elicit/SKILL.md) when upstream behavior is stable enough to become a new spec
+
+Do not force architecture artifacts themselves into Allium unless the repository later establishes that as an explicit pattern.
+
 ## Interaction Rules
 
 - Prefer architectural drivers over architecture style labels.
 - Tie every major design choice to a business need, process need, verified requirement, or explicit technical constraint.
 - Record alternatives when the choice is non-obvious or materially consequential.
 - Keep requirement gaps separate from architecture decisions.
+- Keep architecture fitness criteria separate from implementation detail while still making them verifiable downstream.
 - Keep downstream implementation guidance separate from detailed implementation planning.
 - Identify where human approval, intervention, or escalation is required when the system includes autonomous or agentic behavior.
 
@@ -101,6 +112,7 @@ Architecture produced by this role should be:
 - traceable
 - decision-oriented
 - explicit about boundaries and dependencies
+- explicit about measurable or observable fitness expectations
 - explicit about risks and unresolved tradeoffs
 - light enough for downstream roles to use without reinterpreting the entire design
 

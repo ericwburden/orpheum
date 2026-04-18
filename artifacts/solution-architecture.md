@@ -59,6 +59,18 @@ List the major integrations, external systems, and dependency assumptions the ar
 
 Capture the technical, policy, platform, operational, or delivery constraints that materially shape the architecture.
 
+## Architecture Fitness Criteria
+
+Describe the measurable or observable criteria that indicate whether the architecture is succeeding, such as:
+
+- performance or latency targets
+- reliability or recovery expectations
+- security or control expectations
+- operability, observability, or supportability expectations
+- correctness or boundary-behavior expectations that verification work should test
+
+Keep these criteria architecture-relevant and verifiable. Do not turn them into implementation tasks.
+
 ## Trust Boundaries And Human Control Points
 
 If the system includes AI-enabled or agentic behavior, describe the relevant trust boundaries, escalation points, approval steps, or human intervention expectations.

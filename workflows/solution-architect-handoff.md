@@ -33,7 +33,7 @@ Turn completed architecture outputs into a downstream-ready handoff for planning
 1. Read the solution architecture, architecture decisions, and architecture review artifacts together.
 2. If supporting notes or dependency references still need synthesis, use `research-documentation` first.
 3. Instantiate [`artifacts/architecture-handoff.md`](D:/Projects/agoge/artifacts/architecture-handoff.md) into the project workspace if a working copy does not already exist.
-4. Use `architecture-handoff-packaging` to populate the architecture handoff artifact with the architecture summary, review status and key findings, interface or dependency hotspots, verification focus areas, unresolved decisions and risks, downstream consumers, and next decision points.
+4. Use `architecture-handoff-packaging` to populate the architecture handoff artifact with the architecture summary, review status and key findings, interface or dependency hotspots, verification focus areas, architecture fitness criteria, unresolved decisions and risks, downstream consumers, and next decision points.
 5. Run [`architecture-handoff.check.md`](D:/Projects/agoge/checks/architecture-handoff.check.md), [`architecture-traceability.check.md`](D:/Projects/agoge/checks/architecture-traceability.check.md), and [`solution-architect-boundary.check.md`](D:/Projects/agoge/checks/solution-architect-boundary.check.md).
 
 ## Decision Points

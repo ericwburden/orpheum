@@ -6,13 +6,16 @@ Apply the Solution Architect check chain to instantiated architecture artifacts,
 
 ## When To Use
 
-- A Solution Architect artifact or artifact chain has been drafted and needs definition-of-done validation.
-- A downstream technical consumer needs confidence that the architecture is self-sufficient and within role boundaries.
+- The architecture handoff has been drafted and the full Solution Architect artifact chain exists.
+- A downstream technical consumer needs final definition-of-done confidence that the full architecture chain is self-sufficient and within role boundaries.
 - A check has failed and the work needs a standard rework path instead of ad hoc editing.
 
 ## Inputs
 
-- Required: one or more instantiated Solution Architect artifacts derived from the templates in [`artifacts/`](D:/Projects/agoge/artifacts)
+- Required:
+  - an instantiated copy of [`artifacts/architecture-handoff.md`](D:/Projects/agoge/artifacts/architecture-handoff.md)
+- Expected supporting context:
+  - the corresponding instantiated solution architecture, architecture decisions, and architecture review artifacts
 - Optional: supporting notes, BA artifacts, technical references, or prior check results
 
 ## Outputs
@@ -30,13 +33,13 @@ Apply the Solution Architect check chain to instantiated architecture artifacts,
 
 ## Sequence
 
-1. Determine which instantiated architecture artifacts are in scope.
-2. Run the primary check for each artifact in scope.
-3. Run [`architecture-traceability.check.md`](D:/Projects/agoge/checks/architecture-traceability.check.md) when enough of the architecture chain exists to evaluate linkage across artifacts and upstream BA outputs.
+1. Confirm that the architecture handoff exists and identify the supporting Solution Architect artifacts that feed it.
+2. Run the primary checks for the supporting architecture artifacts and the handoff artifact.
+3. Run [`architecture-traceability.check.md`](D:/Projects/agoge/checks/architecture-traceability.check.md) across the full chain.
 4. Run [`solution-architect-boundary.check.md`](D:/Projects/agoge/checks/solution-architect-boundary.check.md) across all artifacts in scope.
-5. Record failures by artifact and defect type: missing architectural drivers, weak boundaries, unsupported assumptions, hidden tradeoffs, broken traceability, or role drift.
+5. Record failures by artifact and defect type: missing architectural drivers, weak boundaries, unsupported assumptions, hidden tradeoffs, broken traceability, weak readiness ownership, or role drift.
 6. Route remediation to the appropriate earlier Solution Architect or BA artifact rather than patching the latest artifact in isolation.
-7. Re-run the failed checks until the artifact chain passes or until remaining gaps are explicitly recorded as unresolved and the work is intentionally held open.
+7. Re-run the failed checks until the full chain passes or until remaining gaps are explicitly recorded as unresolved and the work is intentionally held open.
 
 ## Required Check Set
 
@@ -72,4 +75,4 @@ Apply the Solution Architect check chain to instantiated architecture artifacts,
 
 ## Notes
 
-This workflow is intentionally lightweight. It is a quality gate and rework loop, not a second full Solution Architect lifecycle.
+This workflow is the final definition-of-done audit after handoff exists. It is a quality gate and rework loop, not a second substantive architecture review stage.

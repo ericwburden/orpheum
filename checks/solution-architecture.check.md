@@ -20,6 +20,7 @@ Validate that the solution architecture artifact clearly expresses the intended 
 - Major flows, interface seams, and integration points are described clearly enough for downstream use.
 - Important contract assumptions or failure expectations are explicit when they materially affect the design.
 - Constraints, risks, and open questions are visible.
+- Architecture fitness criteria are explicit enough for downstream verification or planning to use.
 - Trust boundaries and human control points are recorded when AI-enabled or agentic behavior is relevant.
 
 ## Scoring Or Outcome

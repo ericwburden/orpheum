@@ -15,10 +15,12 @@ Validate that the architecture review artifact records a usable readiness judgme
 - The review scope and reviewed inputs are identified clearly.
 - The overall assessment is explicit.
 - Readiness or approval status is stated clearly.
+- A decision owner or approver is explicit when readiness is not purely self-evident.
 - Key findings are visible and materially relevant.
 - Interface or contract observations are surfaced when boundary quality is part of the review concern.
 - Unresolved risks and questions are explicit.
 - Required remediation is routed to the earliest artifact that should be reworked.
+- Condition owners are explicit when the review outcome is conditional or blocked.
 - The recommended next step is consistent with the actual review outcome.
 
 ## Scoring Or Outcome

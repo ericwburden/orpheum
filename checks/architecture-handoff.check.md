@@ -16,6 +16,7 @@ Validate that the architecture handoff is complete enough for downstream roles t
 - Review status and material architecture findings are visible.
 - Major interface, dependency, or integration hotspots are visible.
 - Verification focus areas are explicit.
+- Architecture fitness criteria are visible enough to guide downstream verification or planning.
 - Unresolved decisions and risks are present.
 - Downstream consumers are identified.
 - Next decision points are included.
