@@ -25,22 +25,26 @@ Allium is installed globally in the local Codex environment and should be treate
 
 ## Repository Structure
 
-- [`agents/`](D:/Projects/agoge/agents) stores reusable `AGENTS.md` templates and agent operating patterns.
+- [`roles/`](D:/Projects/agoge/roles) stores reusable role templates and role operating patterns.
 - [`artifacts/`](D:/Projects/agoge/artifacts) stores reusable scaffolding for plans, reviews, retros, and other repeatable project artifacts.
 - [`notes/`](D:/Projects/agoge/notes) stores structured working notes that capture lessons learned, observations, and candidate practices before they become standards.
 - [`checks/`](D:/Projects/agoge/checks) stores evaluation and validation patterns for judging workflow quality and adherence to standards.
 - [`workflows/`](D:/Projects/agoge/workflows) stores reusable multi-skill workflow definitions.
 - [`skills/`](D:/Projects/agoge/skills) stores vendored or imported skill content used as building blocks.
 
-Use the templates in `agents/` when starting a new project or defining a new agent operating mode. Use the templates in `workflows/` when you want repeatable orchestration across multiple skills, tools, and validation steps. Use `artifacts/` for reusable artifact formats, `notes/` for maturing lessons into durable guidance, and `checks/` for the criteria that determine whether a workflow is actually working.
+Use the templates in `roles/` when starting a new role definition or defining a new agent operating mode. Use the templates in `workflows/` when you want repeatable orchestration across multiple skills, tools, and validation steps. Use `artifacts/` for reusable artifact formats, `notes/` for maturing lessons into durable guidance, and `checks/` for the criteria that determine whether a workflow is actually working.
 
-The first concrete role in [`agents/`](D:/Projects/agoge/agents) is [`business-analyst.md`](D:/Projects/agoge/agents/business-analyst.md), which is intended for project kickoff and discovery work focused on requirements and process understanding.
+The first concrete role in [`roles/`](D:/Projects/agoge/roles) is [`business-analyst.md`](D:/Projects/agoge/roles/business-analyst.md), which is intended for project kickoff and discovery work focused on requirements and process understanding.
 
 The first concrete artifact set in [`artifacts/`](D:/Projects/agoge/artifacts) is also aligned to the Business Analyst role, covering business objectives, process analysis, requirements specification, and downstream requirements handoff. These checked-in files are reusable definitions; live project work should use instantiated copies in a project workspace.
 
 The first concrete check set in [`checks/`](D:/Projects/agoge/checks) is aligned to that same Business Analyst role and artifact chain, acting as a definition-of-done quality gate for BA outputs.
 
 The intended BA lifecycle across this repo is: select an artifact definition, instantiate a project-specific working copy, populate it, run the required checks, remediate failures with the linked skills, and only then hand the output downstream.
+
+The next concrete role in [`roles/`](D:/Projects/agoge/roles) is [`role-builder.md`](D:/Projects/agoge/roles/role-builder.md), which is intended for designing reusable agent roles together with their artifact, workflow, check, skill, and adoption handoff packages.
+
+The intended Role Builder lifecycle in this repo is: role idea or workshop intake, role definition, support-system design, quality review, and adoption handoff. The dedicated `role-*` skills are the primary operating path for that lifecycle, with generic synthesis skills used only as supporting input steps when needed.
 
 ## Vendored Skills
 
@@ -55,5 +59,5 @@ This keeps the skills available inside this repository while preserving a clear 
 
 - Define contribution conventions and evaluation criteria for new patterns.
 - Decide how local changes to vendored subtree content should be managed and synced.
-- Add initial agent and workflow patterns using the templates in `agents/` and `workflows/`.
+- Add initial role and workflow patterns using the templates in `roles/` and `workflows/`.
 - Add initial standards and connect them to templates, notes, and checks.

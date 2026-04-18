@@ -1,0 +1,4 @@
+interface:
+  display_name: "Role Handoff Packaging"
+  short_description: "Package a reviewed role for adoption"
+  default_prompt: "Package this reviewed role so another repo or team can adopt it without reconstructing context."

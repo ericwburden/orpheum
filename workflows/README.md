@@ -16,7 +16,7 @@ Start from [`workflow.template.md`](D:/Projects/agoge/workflows/workflow.templat
 
 ## Business Analyst Workflow Set
 
-The first concrete workflow set in this directory is aligned to the [`Business Analyst`](D:/Projects/agoge/agents/business-analyst.md) role and the Business Analyst artifact library in [`artifacts/`](D:/Projects/agoge/artifacts).
+The first concrete workflow set in this directory is aligned to the [`Business Analyst`](D:/Projects/agoge/roles/business-analyst.md) role and the Business Analyst artifact library in [`artifacts/`](D:/Projects/agoge/artifacts).
 
 - [`business-analyst-kickoff.md`](D:/Projects/agoge/workflows/business-analyst-kickoff.md) drives kickoff and discovery into the business objectives artifact.
 - [`business-analyst-process-analysis.md`](D:/Projects/agoge/workflows/business-analyst-process-analysis.md) turns discovery outputs into as-is/to-be process analysis.
@@ -46,3 +46,39 @@ The local-Markdown skills above are the default operating path for this reposito
 - [`meeting-insights-analyzer`](D:/Projects/agoge/skills/meeting-insights-analyzer/SKILL.md): communication coaching rather than requirements or process analysis.
 - [`linear`](D:/Projects/agoge/skills/linear/SKILL.md), [`connect`](D:/Projects/agoge/skills/connect/SKILL.md), and [`connect-apps`](D:/Projects/agoge/skills/connect-apps/SKILL.md): optional operational integrations rather than default BA workflow dependencies.
 - [`internal-comms`](D:/Projects/agoge/skills/internal-comms/SKILL.md): optional packaging for stakeholder communications, not a default BA skill.
+
+## Role Builder Workflow Set
+
+The next concrete workflow set in this directory is aligned to the [`Role Builder`](D:/Projects/agoge/roles/role-builder.md) role and the Role Builder artifact library in [`artifacts/`](D:/Projects/agoge/artifacts).
+
+- [`role-builder-role-definition.md`](D:/Projects/agoge/workflows/role-builder-role-definition.md) turns a role idea and source references into a reusable role definition brief.
+- [`role-builder-support-system.md`](D:/Projects/agoge/workflows/role-builder-support-system.md) turns the role definition into an explicit support package of artifacts, workflows, checks, and skill support.
+- [`role-builder-quality-review.md`](D:/Projects/agoge/workflows/role-builder-quality-review.md) reviews the role package for coherence, readiness, and remediation needs.
+- [`role-builder-handoff.md`](D:/Projects/agoge/workflows/role-builder-handoff.md) packages a reviewed role for adoption by another repo, team, or downstream designer.
+
+The intended Role Builder lifecycle in this repo is: role idea or workshop intake -> role definition -> support-system design -> quality review -> adoption handoff.
+
+## Role Builder Skill Review
+
+### Direct Support
+
+- [`role-definition`](D:/Projects/agoge/skills/role-definition/SKILL.md): preferred local-Markdown path for turning a role idea and source references into a reusable role-definition brief.
+- [`role-support-system-design`](D:/Projects/agoge/skills/role-support-system-design/SKILL.md): preferred local-Markdown path for deriving the minimum viable support system from a role definition.
+- [`role-package-review`](D:/Projects/agoge/skills/role-package-review/SKILL.md): preferred local-Markdown path for reviewing role-package coherence, recording findings, and producing a readiness assessment.
+- [`role-handoff-packaging`](D:/Projects/agoge/skills/role-handoff-packaging/SKILL.md): preferred local-Markdown path for packaging a reviewed role for downstream adoption without requiring reconstruction from earlier artifacts.
+- [`pattern-adaptation`](D:/Projects/agoge/skills/pattern-adaptation/SKILL.md): preferred local-first path for translating tool-coupled or external patterns into reusable repo-native methods.
+
+### Workshop Intake Support
+
+- [`meeting-notes-and-actions`](D:/Projects/agoge/skills/meeting-notes-and-actions/SKILL.md): explicit intake path when role-definition work starts from workshop notes, interview notes, or meeting transcripts that need to be normalized before the dedicated role-definition workflow can proceed.
+
+### Auxiliary Synthesis
+
+- [`research-documentation`](D:/Projects/agoge/skills/research-documentation/SKILL.md): conditional synthesis helper when local precedents or notes need to be combined before the dedicated `role-*` skills can operate cleanly.
+- [`content-research-writer`](D:/Projects/agoge/skills/content-research-writer/SKILL.md): conditional external-reference helper when comparison material needs to be summarized before role-definition or adaptation work.
+
+### Adjacent Or Future Support
+
+- [`requirements-verification`](D:/Projects/agoge/skills/requirements-verification/SKILL.md): plausible model for future role-package verification or traceability support if Role Builder needs stronger dedicated validation skills.
+
+The dedicated `role-*` skills and `pattern-adaptation` are the primary operating path for this repository's Role Builder workflows. Generic synthesis skills remain available, but they should be used only as supporting input steps rather than as the main Role Builder path.

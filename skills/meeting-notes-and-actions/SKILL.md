@@ -1,6 +1,6 @@
 ---
 name: meeting-notes-and-actions
-description: Turn meeting transcripts or rough notes into crisp summaries with decisions, risks, and owner-tagged action items; use for Zoom/Meet/Teams transcripts, call notes, or long meeting chats to generate share-ready outputs.
+description: Turn meeting transcripts or rough notes into crisp summaries with decisions, risks, and owner-tagged action items; use for Zoom/Meet/Teams transcripts, call notes, long meeting chats, role-design workshops, discovery interviews, or working sessions where the normalized output needs clear decisions, open questions, assumptions, and structured follow-up.
 metadata:
   short-description: Meeting transcript to notes and actions
 ---
@@ -21,6 +21,16 @@ Process transcripts into structured notes and action items.
    - Header with meeting title, date, attendees.
    - Sections: `Summary`, `Decisions`, `Open Questions/Risks`, `Action Items` (checkboxes with owner + due).
 5) Quality checks: ensure names are consistent; no hallucinated facts; flag ambiguities as clarifying questions.
+
+## Role-design intake variant
+- When the notes come from a role-design workshop, interview, or working session, additionally normalize:
+  - candidate responsibilities
+  - out-of-scope items
+  - open questions
+  - assumptions
+  - decisions about role boundaries
+- Keep these as explicit sections or clearly labeled bullets instead of forcing them into generic meeting prose.
+- Use this normalized output as an input to role-definition work rather than treating raw notes as a stable role brief.
 
 ## Optional extras
 - Include timeline of major moments if timestamps exist.

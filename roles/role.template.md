@@ -1,8 +1,8 @@
-# AGENTS Template
+# Role Template
 
 ## Purpose
 
-Describe the repository or project context this agent guide is designed for.
+Describe the repository or project context this role definition is designed for.
 
 ## Success Criteria
 
@@ -18,7 +18,7 @@ Describe the repository or project context this agent guide is designed for.
 
 ## Expected Inputs
 
-- List the kinds of tasks this agent guide is meant to support.
+- List the kinds of tasks this role is meant to support.
 - Note any prerequisite documents, folders, or tools that should be checked first.
 
 ## Default Behavior

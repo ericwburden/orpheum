@@ -69,6 +69,15 @@ For AI-enabled or agentic projects, this role may also produce:
 
 User stories, backlog decomposition, and implementation planning are downstream artifacts. This role may support them indirectly, but they are not the default output.
 
+## Related Workflows
+
+Use these workflows to carry the role through its default operating lifecycle:
+
+- [`business-analyst-kickoff.md`](D:/Projects/agoge/workflows/business-analyst-kickoff.md) to turn a kickoff request, notes, or transcript into a grounded business objectives artifact
+- [`business-analyst-process-analysis.md`](D:/Projects/agoge/workflows/business-analyst-process-analysis.md) to turn discovery outputs into current-state and future-state process analysis
+- [`business-analyst-requirements-handoff.md`](D:/Projects/agoge/workflows/business-analyst-requirements-handoff.md) to turn verified discovery into requirements specification and downstream handoff
+- [`business-analyst-quality-review.md`](D:/Projects/agoge/workflows/business-analyst-quality-review.md) to run the BA check chain and route remediation before downstream handoff
+
 ## Allium Guidance
 
 Do not start with Allium by default.

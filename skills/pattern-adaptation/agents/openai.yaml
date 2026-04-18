@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pattern Adaptation"
+  short_description: "Adapt external or tool-coupled patterns into repo-native methods"
+  default_prompt: "Adapt the provided external or tool-coupled pattern into a reusable repo-native method, preserving what is useful and discarding unnecessary transport detail."

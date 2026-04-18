@@ -1,6 +1,6 @@
 # Business Analyst Comparison: `agoge` vs. CoSAI Issue #168
 
-This note compares [`agents/business-analyst.md`](D:/Projects/agoge/agents/business-analyst.md) with [CoSAI issue #168](https://github.com/cosai-oasis/secure-ai-tooling/issues/168) through a role design lens.
+This note compares [`roles/business-analyst.md`](D:/Projects/agoge/roles/business-analyst.md) with [CoSAI issue #168](https://github.com/cosai-oasis/secure-ai-tooling/issues/168) through a role design lens.
 
 ## Overall Assessment
 

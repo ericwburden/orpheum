@@ -1,0 +1,4 @@
+interface:
+  display_name: "Role Package Review"
+  short_description: "Review reusable role packages for coherence and readiness"
+  default_prompt: "Review the provided reusable role package for coherence, readiness, and remediation needs."

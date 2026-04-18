@@ -18,7 +18,7 @@ Start from [`artifact.template.md`](D:/Projects/agoge/artifacts/artifact.templat
 
 ## Business Analyst Artifacts
 
-The first concrete artifact set in this directory is aligned to the [`Business Analyst`](D:/Projects/agoge/agents/business-analyst.md) role.
+The first concrete artifact set in this directory is aligned to the [`Business Analyst`](D:/Projects/agoge/roles/business-analyst.md) role.
 
 - [`business-objectives.md`](D:/Projects/agoge/artifacts/business-objectives.md) defines the reusable structure for capturing the business problem, goals, stakeholders, context, and scope boundaries.
 - [`process-analysis.md`](D:/Projects/agoge/artifacts/process-analysis.md) defines the reusable structure for capturing as-is and to-be process understanding, business rules, actors, triggers, and gaps.
@@ -28,3 +28,16 @@ The first concrete artifact set in this directory is aligned to the [`Business A
 Use this set when a project needs structured kickoff and discovery outputs without inventing a custom artifact library from scratch. Instantiate the needed artifact files into the project workspace before filling them out.
 
 Each Business Analyst artifact links to its primary definition-of-done check and the two cross-cutting BA checks for traceability and role-boundary discipline. The intended lifecycle is: select template, instantiate project copy, populate it, run checks, remediate failures, then hand it downstream.
+
+## Role Builder Artifacts
+
+The next concrete artifact set in this directory is aligned to the [`Role Builder`](D:/Projects/agoge/roles/role-builder.md) role.
+
+- [`role-definition-brief.md`](D:/Projects/agoge/artifacts/role-definition-brief.md) defines the reusable structure for capturing a role's job-to-be-done, lifecycle position, boundaries, success criteria, and default outputs.
+- [`role-support-system.md`](D:/Projects/agoge/artifacts/role-support-system.md) defines the reusable structure for capturing a role's artifact set, workflow set, check set, skill support, and tooling preferences.
+- [`role-package-review.md`](D:/Projects/agoge/artifacts/role-package-review.md) defines the reusable structure for reviewing the coherence and readiness of a role package.
+- [`role-package-handoff.md`](D:/Projects/agoge/artifacts/role-package-handoff.md) defines the reusable structure for packaging a reviewed role for downstream adoption, including guidance, limitations, consumers, and next steps.
+
+Use this set when defining or tightening a reusable role package rather than producing project-specific delivery artifacts. Instantiate the needed artifact files into the working location before filling them out.
+
+The intended Role Builder lifecycle is: select template, instantiate working copy, populate the role definition, derive the support system, review the package, package it for adoption, and remediate any failed checks before treating the role as reusable downstream.

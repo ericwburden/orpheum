@@ -1,0 +1,4 @@
+interface:
+  display_name: "Role Support System Design"
+  short_description: "Design operational support systems for reusable agent roles"
+  default_prompt: "Design the support system for the provided reusable role, including artifacts, workflows, checks, skill support, and tooling preferences."

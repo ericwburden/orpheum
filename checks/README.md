@@ -15,7 +15,7 @@ Start from [`workflow-check.template.md`](D:/Projects/agoge/checks/workflow-chec
 
 ## Business Analyst Check Set
 
-The first concrete check set in this directory supports the [`Business Analyst`](D:/Projects/agoge/agents/business-analyst.md) role and its artifact library.
+The first concrete check set in this directory supports the [`Business Analyst`](D:/Projects/agoge/roles/business-analyst.md) role and its artifact library.
 
 - [`business-objectives.check.md`](D:/Projects/agoge/checks/business-objectives.check.md) validates the business objectives artifact.
 - [`process-analysis.check.md`](D:/Projects/agoge/checks/process-analysis.check.md) validates the process analysis artifact.
@@ -31,3 +31,16 @@ Apply these checks to instantiated project artifacts derived from the templates 
 Where a check depends on a specific repo skill to remediate or complete the work, that skill is referenced directly inside the check definition. The current BA check set is fully supported by the existing BA-oriented skills, so no additional check-only skill was required for this pass.
 
 The intended BA lifecycle is: instantiate the artifact template, populate the working copy, run the required primary and cross-cutting checks, remediate failures with the linked skills, and only then move the artifact downstream.
+
+## Role Builder Check Set
+
+The next concrete check set in this directory supports the [`Role Builder`](D:/Projects/agoge/roles/role-builder.md) role and its artifact library.
+
+- [`role-definition-brief.check.md`](D:/Projects/agoge/checks/role-definition-brief.check.md) validates the role definition brief.
+- [`role-support-system.check.md`](D:/Projects/agoge/checks/role-support-system.check.md) validates the role support system artifact.
+- [`role-package-review.check.md`](D:/Projects/agoge/checks/role-package-review.check.md) validates the role package review artifact.
+- [`role-package-handoff.check.md`](D:/Projects/agoge/checks/role-package-handoff.check.md) validates the adoption-facing role package handoff artifact.
+- [`role-package-traceability.check.md`](D:/Projects/agoge/checks/role-package-traceability.check.md) validates linkage across the Role Builder artifact chain.
+- [`role-builder-boundary.check.md`](D:/Projects/agoge/checks/role-builder-boundary.check.md) validates that role-design outputs stay inside the intended role boundary.
+
+These checks are definition-of-done quality gates for the Role Builder lifecycle: define the role, design the support system, review the package, package it for adoption, and remediate failures at the earliest stage that introduced the defect.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Role Definition"
+  short_description: "Define reusable agent roles from job-to-be-done and references"
+  default_prompt: "Define a reusable agent role from the provided role idea, references, and intended job-to-be-done."

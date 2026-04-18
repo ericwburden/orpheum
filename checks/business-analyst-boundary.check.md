@@ -27,7 +27,7 @@ The output passes only if it remains recognizably Business Analyst work rather t
 ## Evidence Required
 
 - The BA artifact or workflow output being reviewed.
-- The Business Analyst role definition in [`agents/business-analyst.md`](D:/Projects/agoge/agents/business-analyst.md) when needed for role-boundary interpretation.
+- The Business Analyst role definition in [`roles/business-analyst.md`](D:/Projects/agoge/roles/business-analyst.md) when needed for role-boundary interpretation.
 
 If the output’s role identity is ambiguous, fail the check and identify the drift explicitly.
 
