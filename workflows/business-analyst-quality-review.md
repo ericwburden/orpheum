@@ -34,7 +34,7 @@ Apply the Business Analyst check chain to instantiated BA artifacts, identify fa
 2. Run the primary check for each artifact in scope.
 3. Run [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md) when enough of the BA chain exists to evaluate linkage across artifacts.
 4. Run [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) across all artifacts in scope.
-5. Record failures by artifact and defect type: missing evidence, weak framing, process ambiguity, unsupported requirements, broken traceability, or role drift.
+5. Record failures by artifact and defect type: missing evidence, weak framing, process ambiguity, unsupported requirements, broken traceability, missing specification relationship, missing confirmation status, or role drift.
 6. Route remediation to the appropriate BA skill or earlier BA workflow stage rather than patching the latest artifact in isolation.
 7. Re-run the failed checks until the artifact chain passes or until the remaining gaps are explicitly recorded as unresolved and the work is intentionally held open.
 

@@ -15,10 +15,12 @@ Validate that the requirements handoff artifact is complete enough for downstrea
 - The business problem and desired outcome are summarized clearly.
 - Verified requirements are packaged for downstream use.
 - Risks, dependencies, assumptions, and open questions are present.
+- Confirmation status is explicit so downstream roles can distinguish validated findings from still-pending discovery.
 - Downstream consumers are identified.
 - Next decision points are included.
 - The artifact does not collapse into implementation planning, task breakdown, or delivery management.
 - Human oversight and AI notes are separated when relevant.
+- The relationship to any existing or candidate Allium specification is explicit when specification work is in scope.
 
 ## Scoring Or Outcome
 
@@ -37,6 +39,7 @@ If the handoff depends on implicit context not captured in the artifact, fail th
 
 - [`handoff-packaging`](D:/Projects/agoge/skills/handoff-packaging/SKILL.md) when the handoff needs to be repackaged for downstream consumers with stronger traceability, risks, and next decision points.
 - [`requirements-verification`](D:/Projects/agoge/skills/requirements-verification/SKILL.md) when the handoff is weak because the underlying requirements are still not cleanly verified.
+- [`allium`](C:/Users/ericw/.codex/skills/allium/SKILL.md) or [`tend`](C:/Users/ericw/.codex/skills/allium/skills/tend/SKILL.md) when the handoff must state how the BA outputs confirm, clarify, or expose gaps in an existing specification.
 
 ## Failure Response
 

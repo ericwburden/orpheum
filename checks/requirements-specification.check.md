@@ -14,12 +14,14 @@ Validate that the requirements specification artifact contains verified, traceab
 
 - Verified requirements are stated clearly and are scoped.
 - Each verified requirement has a business rationale or an explicit connection to a business objective or process need.
+- Each verified requirement includes an explicit verification basis or supporting evidence.
 - Requirements are testable or verifiable in business terms.
 - Non-requirements are separated from verified requirements.
 - Assumptions and open questions are separated from verified requirements.
 - Constraints are captured.
 - Business constraints and AI or agent-specific constraints are separated when relevant.
 - Acceptance considerations are present.
+- The relationship to any existing or candidate Allium specification is explicit when specification work is in scope.
 
 ## Scoring Or Outcome
 
@@ -39,6 +41,7 @@ If traceability or evidence is missing, fail the check and identify which requir
 
 - [`requirements-verification`](D:/Projects/agoge/skills/requirements-verification/SKILL.md) when the requirement set needs to be reclassified into verified requirements, non-requirements, assumptions, and open questions.
 - [`research-documentation`](D:/Projects/agoge/skills/research-documentation/SKILL.md) when additional local evidence or clarification is needed before requirements can pass the check.
+- [`allium`](C:/Users/ericw/.codex/skills/allium/SKILL.md) or [`tend`](C:/Users/ericw/.codex/skills/allium/skills/tend/SKILL.md) when the requirement set must be reconciled against an existing specification or prepared for deliberate Allium promotion.
 
 ## Failure Response
 

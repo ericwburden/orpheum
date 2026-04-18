@@ -35,6 +35,7 @@ For each requirement, capture:
 - requirement statement
 - business rationale
 - related objective or process need
+- verification basis or supporting evidence
 - any relevant scope boundary
 
 ## Non-Requirements
@@ -60,6 +61,18 @@ If the project includes AI-enabled or agentic behavior, keep business constraint
 Describe what would allow a stakeholder to verify that the requirement has been met.
 
 For AI-enabled projects, include any business-facing acceptance expectations for agent outputs.
+
+## Specification Relationship
+
+If an Allium specification or other behavioral specification already exists, record how this requirement set relates to it.
+
+Capture:
+
+- the existing specification or specification area in scope
+- where current discovery confirms existing specified behavior
+- where current discovery clarifies or narrows existing specified behavior
+- where current discovery exposes specification gaps, conflicts, or outdated behavior
+- whether any verified behavior is ready for Allium promotion now or only after more discovery
 
 ## Candidate Allium Promotion
 

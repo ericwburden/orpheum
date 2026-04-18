@@ -141,7 +141,10 @@ The handoff should clearly communicate:
 - what the current process is
 - what outcome is desired
 - what requirements have been verified
+- what evidence supports those verified requirements
 - how the requirements trace back to business goals and process needs
+- whether stakeholder confirmation is complete, partial, or still pending
+- how the BA outputs relate to any existing or candidate Allium specification
 - what assumptions, human oversight needs, or open questions remain
 - what next decision points should be taken up by downstream roles without collapsing into implementation planning
 

@@ -46,6 +46,28 @@ List material risks, dependencies, constraints, or external conditions that down
 
 List assumptions still in play and questions that remain unresolved.
 
+## Confirmation Status
+
+State whether the framing and requirement set have been confirmed with stakeholders, partially confirmed, or are still pending.
+
+Capture:
+
+- overall confirmation status
+- which stakeholders or stakeholder groups have responded
+- any material disagreements, corrections, or pending confirmations that downstream roles should account for
+
+## Specification Relationship
+
+If Allium or another behavioral specification is in scope, summarize how the BA outputs relate to it.
+
+Capture:
+
+- whether an existing specification was reviewed
+- which requirements or behaviors confirm the specification
+- which findings clarify, narrow, or extend the specification
+- which gaps, conflicts, or outdated behaviors still need specification work
+- whether any verified behavior is ready for deliberate Allium promotion
+
 ## Human Oversight And AI Notes
 
 If the system includes AI-enabled or agentic behavior, capture:

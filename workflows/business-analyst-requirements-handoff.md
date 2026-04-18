@@ -39,19 +39,22 @@ Turn discovery and process analysis into verified business requirements and a do
 1. Read the business objectives and process analysis artifacts together and identify which requirements are truly supported by the current discovery evidence.
 2. If gaps remain, use `research-documentation` to synthesize any additional local documentation or structured notes needed to clarify the requirement set.
 3. Instantiate [`artifacts/requirements-specification.md`](D:/Projects/agoge/artifacts/requirements-specification.md) and [`artifacts/requirements-handoff.md`](D:/Projects/agoge/artifacts/requirements-handoff.md) into the project workspace if working copies do not already exist.
-4. Use `requirements-verification` to determine which requirements are confirmed, separate non-requirements and unresolved items, and populate the instantiated requirements specification artifact.
-5. Use `handoff-packaging` to build the instantiated requirements handoff artifact with traceability, risks, dependencies, unresolved questions, and downstream decision points.
-6. Run [`requirements-specification.check.md`](D:/Projects/agoge/checks/requirements-specification.check.md), [`requirements-handoff.check.md`](D:/Projects/agoge/checks/requirements-handoff.check.md), [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md), and [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) against the instantiated BA chain.
-7. If the verified behavior is stable enough for formal specification, use the existing Allium skills to promote or reconcile it deliberately rather than leaving specification work implicit.
-8. If the handoff is mature and the next step is implementation planning, use `spec-to-implementation` as a downstream bridge rather than extending BA discovery further.
+4. Use `requirements-verification` to determine which requirements are confirmed, separate non-requirements and unresolved items, and populate the instantiated requirements specification artifact, including the verification basis for each verified requirement.
+5. If Allium or another behavioral specification is in scope, record whether the verified requirement set confirms, clarifies, or exposes gaps in that specification before treating the BA package as complete.
+6. Use `handoff-packaging` to build the instantiated requirements handoff artifact with traceability, risks, dependencies, unresolved questions, stakeholder confirmation status, specification relationship, and downstream decision points.
+7. Run [`requirements-specification.check.md`](D:/Projects/agoge/checks/requirements-specification.check.md), [`requirements-handoff.check.md`](D:/Projects/agoge/checks/requirements-handoff.check.md), [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md), and [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) against the instantiated BA chain.
+8. If the verified behavior is stable enough for formal specification, use the existing Allium skills to promote or reconcile it deliberately rather than leaving specification work implicit.
+9. If the handoff is mature and the next step is implementation planning, use `spec-to-implementation` as a downstream bridge rather than extending BA discovery further.
 
 ## Decision Points
 
 - If a requirement does not trace back to a business objective or process need, treat it as unverified.
+- If a requirement has no explicit verification basis, treat it as unverified even if it sounds plausible.
 - If proposed solutions were mentioned during discovery, keep them separate from confirmed requirements unless they were explicitly validated as requirements.
 - If AI-enabled behavior is involved, separate business objectives, acceptance expectations for agent outputs, and AI or agent-specific constraints.
 - If the requirement set is stable and behaviorally clear, identify which parts may be ready for Allium promotion.
 - If an Allium specification already exists, surface where the verified requirement set confirms it, clarifies it, or reveals a specification gap.
+- If stakeholder confirmation is still pending, carry that status into the handoff explicitly rather than implying downstream-ready certainty.
 
 ## Validation
 
