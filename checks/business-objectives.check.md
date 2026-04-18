@@ -18,6 +18,7 @@ Validate that the business objectives artifact is complete enough to support pro
 - Success criteria are present.
 - In-scope and out-of-scope boundaries are stated.
 - Assumptions and open questions are visible.
+- Stakeholder confirmation status is explicit, including whether the framing has been confirmed or is still pending.
 
 ## Scoring Or Outcome
 

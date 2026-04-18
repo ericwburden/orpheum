@@ -34,14 +34,16 @@ Turn discovery outputs into a clear analysis of current-state and future-state p
 4. Instantiate [`artifacts/process-analysis.md`](D:/Projects/agoge/artifacts/process-analysis.md) into the project workspace if a working copy does not already exist.
 5. Populate the current-state section of the instantiated process analysis artifact, including actors, triggers, inputs, outputs, and pain points.
 6. Populate the future-state section, capturing intended changes, required outcomes, and the process conditions needed to support the business objective.
-7. Record business rules, exceptions, gaps, dependencies, and human oversight notes where the process involves AI-enabled or agentic behavior.
-8. Run [`process-analysis.check.md`](D:/Projects/agoge/checks/process-analysis.check.md), [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md), and [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) against the instantiated artifact and the existing BA chain.
+7. Record the explicit process needs that later requirements should trace back to rather than leaving them implied inside the broader process narrative.
+8. Record business rules, exceptions, gaps, dependencies, and human oversight notes where the process involves AI-enabled or agentic behavior.
+9. Run [`process-analysis.check.md`](D:/Projects/agoge/checks/process-analysis.check.md), [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md), and [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) against the instantiated artifact and the existing BA chain.
 
 ## Decision Points
 
 - If the current-state process is unknown, do not infer it from the desired future state; record the gap and ask for clarification.
 - If multiple process variants exist, capture them explicitly instead of flattening them into one path.
 - If policy or rule conflicts appear, preserve them as unresolved questions or competing constraints.
+- If process needs are only implied by the narrative, restate them explicitly before treating the artifact as ready for requirements work.
 - If AI-enabled steps appear in the future-state process, record human review, approval, intervention, or escalation expectations.
 
 ## Validation

@@ -69,3 +69,13 @@ Record solution ideas raised during discovery, but keep them separate from the b
 ## Open Questions
 
 List unresolved questions that block or weaken understanding of the business objective.
+
+## Stakeholder Confirmation
+
+Record whether the current framing has been restated to stakeholders and what confirmation status applies.
+
+Capture:
+
+- confirmation status such as confirmed, partially confirmed, or pending
+- which stakeholders or stakeholder groups have responded
+- any material disagreements, corrections, or unresolved concerns

@@ -26,6 +26,16 @@ Name the process or workflow being analyzed.
 
 Describe what the process should achieve from a business perspective.
 
+## Process Needs
+
+Describe the operational needs the process must satisfy in order to support the business objective.
+
+Capture:
+
+- the outcomes the process must enable
+- the conditions the process must preserve or improve
+- the operational needs that later requirements should trace back to
+
 ## Current-State ("As-Is") Process
 
 Describe the current process in sequence.

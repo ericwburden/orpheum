@@ -17,6 +17,7 @@ Use after the artifact chain exists. Do not apply this check to a single standal
 
 - Business objectives connect to process needs.
 - Process needs connect to verified requirements.
+- Process needs are recorded explicitly rather than inferred only from narrative process descriptions.
 - The requirements handoff reflects that linkage clearly enough for downstream readers.
 - Unsupported requirements are not presented as confirmed.
 - Contradictions, missing links, or evidence gaps are surfaced explicitly rather than silently patched over.

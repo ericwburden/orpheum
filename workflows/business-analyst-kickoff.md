@@ -34,15 +34,17 @@ Turn a project kickoff prompt, rough notes, transcript, or prior documentation i
 3. If rough notes or a transcript already exist, use `meeting-notes-and-actions` to extract the business problem, decisions, risks, action items, and ambiguities.
 4. If multiple existing documents or research sources are involved, use `research-documentation` to synthesize the relevant context into a coherent discovery summary.
 5. Instantiate [`artifacts/business-objectives.md`](D:/Projects/agoge/artifacts/business-objectives.md) into the project workspace if a working copy does not already exist.
-6. Populate the instantiated business objectives artifact, keeping business objectives, scope boundaries, assumptions, proposed solutions, and open questions clearly separated.
-7. Run [`business-objectives.check.md`](D:/Projects/agoge/checks/business-objectives.check.md), [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md), and [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) against the instantiated artifact and any supporting BA chain that already exists.
-8. Confirm that the resulting artifact passes the required checks and is sufficient to support process analysis without inventing missing business facts.
+6. Populate the instantiated business objectives artifact, keeping business objectives, scope boundaries, assumptions, proposed solutions, open questions, and stakeholder confirmation status clearly separated.
+7. If stakeholder confirmation has occurred, record the response and any corrections. If it has not occurred yet, record that it is still pending rather than implying confirmation.
+8. Run [`business-objectives.check.md`](D:/Projects/agoge/checks/business-objectives.check.md), [`traceability.check.md`](D:/Projects/agoge/checks/traceability.check.md), and [`business-analyst-boundary.check.md`](D:/Projects/agoge/checks/business-analyst-boundary.check.md) against the instantiated artifact and any supporting BA chain that already exists.
+9. Confirm that the resulting artifact passes the required checks and is sufficient to support process analysis without inventing missing business facts.
 
 ## Decision Points
 
 - If only a prompt exists, structure discovery around open questions and stakeholder gaps before drafting conclusions.
 - If a transcript exists, normalize it first rather than drafting the artifact directly from noisy raw material.
 - If prior docs conflict, preserve the contradiction as an open question instead of reconciling it silently.
+- If stakeholder confirmation has not happened yet, record the gap explicitly and keep the confirmation status pending instead of implying agreement.
 - If the project includes AI-enabled or agentic behavior, record business-facing constraints separately from AI or agent-specific constraints.
 
 ## Validation

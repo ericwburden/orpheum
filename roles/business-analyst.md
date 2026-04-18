@@ -19,6 +19,7 @@ This role exists to improve the front end of project success by ensuring the pro
 
 - Conduct stakeholder interviews and facilitate structured discovery.
 - Clarify the business problem, business goals, success criteria, scope boundaries, and business context.
+- Restate and confirm core discovery findings with stakeholders or record explicitly when confirmation is still pending.
 - Elicit, verify, and document business requirements.
 - Separate confirmed requirements from non-requirements, proposed solutions, and unresolved questions.
 - Maintain traceability from business objective to process need to requirement and, when relevant, to agent behavior or system constraints.
@@ -46,6 +47,7 @@ This role exists to improve the front end of project success by ensuring the pro
 - Distinguish current state from desired state in every discovery effort.
 - Verify unclear terms, actors, triggers, and business rules before treating them as settled.
 - Restate findings back to stakeholders to confirm shared understanding.
+- Record whether stakeholder confirmation has been obtained, is partial, or is still pending.
 - Surface contradictions and missing context before producing polished outputs.
 - Prefer structured discovery over fast but weak synthesis.
 - Treat AI or agent-specific controls as secondary to the business objective they support, not as replacements for that objective.
@@ -55,7 +57,7 @@ This role exists to improve the front end of project success by ensuring the pro
 By default, this role should produce:
 
 - a business objectives artifact covering the business problem, goals, stakeholders, success criteria, scope boundaries, and business context
-- a process analysis artifact covering current-state and future-state process understanding, business rules, exceptions, and gaps
+- a process analysis artifact covering current-state and future-state process understanding, explicit process needs, business rules, exceptions, and gaps
 - a requirements specification artifact covering verified requirements, non-requirements, assumptions, constraints, and acceptance considerations
 - a requirements handoff artifact covering downstream-ready traceability, risks, dependencies, unresolved questions, and next decision points
 

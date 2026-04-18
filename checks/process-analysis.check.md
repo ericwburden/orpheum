@@ -14,6 +14,7 @@ Validate that the process analysis artifact accurately captures current-state an
 
 - The process in scope is identified explicitly.
 - Current-state and future-state process descriptions are both present.
+- Process needs are explicit enough that later requirements can trace back to them.
 - Actors, triggers, inputs, and outputs are described clearly enough to follow the process.
 - Business rules are recorded.
 - Exceptions, edge cases, or escalation paths are recorded when known.
