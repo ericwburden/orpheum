@@ -82,6 +82,8 @@ Codex skills are modular instruction bundles that tell Codex how to execute a ta
 - [create-plan/](./create-plan/) - Quickly draft concise execution plans for coding tasks.
 - [gh-address-comments/](./gh-address-comments/) - Address review or issue comments on the open GitHub PR for the current branch using `gh`.
 - [gh-fix-ci/](./gh-fix-ci/) - Inspect failing GitHub Actions checks, summarize failures, and propose fixes.
+- [implementation-package-prep/](./implementation-package-prep/) - Prepare downstream-ready implementation packages with explicit change inventory, evidence capture, self-review, and handoff context.
+- [implementation-skill-discovery/](./implementation-skill-discovery/) - Decide when recurring Implementation Engineer friction justifies a new dedicated implementation skill.
 - [mcp-builder/](./mcp-builder/) - Build and evaluate MCP servers with best practices and an evaluation harness.
 - [webapp-testing/](./webapp-testing/) - Run targeted web app tests and summarize results.
 
