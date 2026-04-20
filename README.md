@@ -63,9 +63,13 @@ The next concrete role in [`roles/`](D:/Projects/agoge/roles) is [`role-builder.
 
 The intended Role Builder lifecycle in this repo is: role idea or workshop intake, role definition, support-system design, quality review, and adoption handoff. The dedicated `role-*` skills are the primary operating path for that lifecycle, with generic synthesis skills used only as supporting input steps when needed.
 
+In this repository, `Role Builder hardening pass` is the explicit short trigger for the standard Role Builder quality-review step.
+
 The next concrete role in [`roles/`](D:/Projects/agoge/roles) is [`solution-architect.md`](D:/Projects/agoge/roles/solution-architect.md), which is intended for turning validated BA outputs into an explicit solution shape, architectural decision record, reviewed architecture package, and downstream technical handoff.
 
 The next concrete role in [`roles/`](D:/Projects/agoge/roles) is [`technical-planner.md`](D:/Projects/agoge/roles/technical-planner.md), which is intended for turning reviewed architecture and validated requirements into an implementation strategy, explicit sequencing and dependency handling, a reviewed planning package, and downstream implementation handoff.
+
+The next concrete role in [`roles/`](D:/Projects/agoge/roles) is [`qa-verification-lead.md`](D:/Projects/agoge/roles/qa-verification-lead.md), which is intended for turning reviewed requirements, architecture, planning, and implementation context into an explicit verification strategy, traceable coverage matrix, evidence review, and downstream verification handoff.
 
 ## Vendored Skills
 

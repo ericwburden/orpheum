@@ -75,6 +75,7 @@ When needed, this role may also produce:
 - comparison notes between the repo's role design and external reference implementations
 - recommendations for local adaptations of tool-coupled skills
 - coherence reviews that identify structural gaps across the role package
+- a named `Role Builder hardening pass` review when the user wants the standard package-hardening review and remediation route applied explicitly
 
 ## Related Workflows
 
@@ -84,6 +85,8 @@ Use these workflows to carry the role through its default operating lifecycle:
 - [`role-builder-support-system.md`](D:/Projects/agoge/workflows/role-builder-support-system.md) to turn the role definition into an explicit support package of artifacts, workflows, checks, and skill support
 - [`role-builder-quality-review.md`](D:/Projects/agoge/workflows/role-builder-quality-review.md) to review the role package for coherence, readiness, and remediation needs
 - [`role-builder-handoff.md`](D:/Projects/agoge/workflows/role-builder-handoff.md) to package a reviewed role for adoption by another repo, team, or downstream designer
+
+The phrase `Role Builder hardening pass` is an explicit trigger for running [`role-builder-quality-review.md`](D:/Projects/agoge/workflows/role-builder-quality-review.md) as the standard package review step.
 
 ## Interaction Rules
 
@@ -95,6 +98,7 @@ Use these workflows to carry the role through its default operating lifecycle:
 - Keep tool preference explicit when the repo has a default operating model.
 - Make Allium touchpoints explicit when the role interacts with product behavior, specifications, test propagation, or spec-code alignment.
 - If a referenced pattern is strong but too broad, adopt the useful parts without importing the full role shape.
+- Treat `Role Builder hardening pass` as the explicit request to run the standard package review for coherence, traceability, boundary discipline, findings, and remediation routing.
 
 ## Quality Standard
 

@@ -67,3 +67,16 @@ The next concrete artifact set in this directory is aligned to the [`Technical P
 Use this set when reviewed architecture and validated requirements need to be turned into a downstream-ready execution plan. Instantiate the needed artifact files into the project workspace before filling them out.
 
 The intended Technical Planner lifecycle is: select template, instantiate working copy, define the implementation strategy, make sequencing and dependencies explicit, review the planning package, package the implementation handoff, run checks, remediate failures, and only then move the plan downstream.
+
+## QA / Verification Lead Artifacts
+
+The next concrete artifact set in this directory is aligned to the [`QA / Verification Lead`](D:/Projects/agoge/roles/qa-verification-lead.md) role.
+
+- [`verification-strategy.md`](D:/Projects/agoge/artifacts/verification-strategy.md) defines the reusable structure for capturing verification scope, confidence goals, evidence expectations, risk focus, and readiness framing.
+- [`verification-matrix.md`](D:/Projects/agoge/artifacts/verification-matrix.md) defines the reusable structure for mapping requirements, architecture, planning hotspots, and implementation slices to expected or observed verification evidence.
+- [`evidence-review.md`](D:/Projects/agoge/artifacts/evidence-review.md) defines the reusable structure for capturing durable evidence review findings, readiness, remediation, and unresolved concerns before handoff.
+- [`verification-handoff.md`](D:/Projects/agoge/artifacts/verification-handoff.md) defines the reusable structure for packaging reviewed verification outputs for downstream implementation, review, or release-adjacent roles.
+
+Use this set when reviewed delivery artifacts and implementation evidence need to be turned into a downstream-ready verification package. Instantiate the needed artifact files into the project workspace before filling them out.
+
+The intended QA / Verification Lead lifecycle is: select template, instantiate working copy, define the verification strategy, map verification coverage, review the evidence package explicitly, package the verification handoff, run checks, remediate failures, and only then move the verification package downstream.

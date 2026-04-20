@@ -4,11 +4,14 @@
 
 Review the full role package for coherence, record findings and remediation decisions, and determine whether the role is ready to move into adoption handoff or still needs rework.
 
+This workflow is the explicit implementation of the `Role Builder hardening pass`.
+
 ## When To Use
 
 - A role definition and support system both exist and need a readiness review.
 - A role package has been expanded and should be checked for coherence drift.
 - A downstream adopter needs confidence that the role package is usable without hidden conventions.
+- The user explicitly asks for a `Role Builder hardening pass`.
 
 ## Inputs
 
@@ -58,3 +61,5 @@ Review the full role package for coherence, record findings and remediation deci
 ## Notes
 
 This workflow is the final quality gate before adoption handoff for a reusable role package.
+
+In this repository, `Role Builder hardening pass` is the short trigger phrase for invoking this workflow and its required checks.

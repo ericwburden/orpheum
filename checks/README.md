@@ -70,3 +70,16 @@ The next concrete check set in this directory supports the [`Technical Planner`]
 - [`technical-planner-boundary.check.md`](D:/Projects/agoge/checks/technical-planner-boundary.check.md) validates that planning outputs stay within role boundaries.
 
 These checks are definition-of-done quality gates for the Technical Planner lifecycle: define the implementation strategy, define sequencing and dependencies, review the plan explicitly, package the implementation handoff, and remediate failures at the earliest stage that introduced the defect.
+
+## QA / Verification Lead Check Set
+
+The next concrete check set in this directory supports the [`QA / Verification Lead`](D:/Projects/agoge/roles/qa-verification-lead.md) role and its artifact library.
+
+- [`verification-strategy.check.md`](D:/Projects/agoge/checks/verification-strategy.check.md) validates the verification strategy artifact.
+- [`verification-matrix.check.md`](D:/Projects/agoge/checks/verification-matrix.check.md) validates the verification matrix artifact.
+- [`evidence-review.check.md`](D:/Projects/agoge/checks/evidence-review.check.md) validates the durable evidence review artifact.
+- [`verification-handoff.check.md`](D:/Projects/agoge/checks/verification-handoff.check.md) validates the verification handoff artifact.
+- [`verification-traceability.check.md`](D:/Projects/agoge/checks/verification-traceability.check.md) validates linkage from upstream requirements, architecture, planning, and implementation artifacts through the verification chain.
+- [`qa-verification-boundary.check.md`](D:/Projects/agoge/checks/qa-verification-boundary.check.md) validates that verification outputs stay within role boundaries.
+
+These checks are definition-of-done quality gates for the QA / Verification Lead lifecycle: define the verification strategy, map coverage and evidence, review the verification package explicitly, package the verification handoff, and remediate failures at the earliest stage that introduced the defect.

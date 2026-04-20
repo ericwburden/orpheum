@@ -60,6 +60,8 @@ The next concrete workflow set in this directory is aligned to the [`Role Builde
 
 The intended Role Builder lifecycle in this repo is: role idea or workshop intake -> role definition -> support-system design -> quality review -> adoption handoff.
 
+`Role Builder hardening pass` is the explicit short trigger for invoking [`role-builder-quality-review.md`](D:/Projects/agoge/workflows/role-builder-quality-review.md).
+
 ## Role Builder Skill Review
 
 ### Direct Support
@@ -158,3 +160,38 @@ The intended Technical Planner lifecycle in this repo is: reviewed architecture 
 - No dedicated sequencing-specific or planning-review skill exists yet. For now, sequencing and review coverage is embedded directly in `spec-to-implementation`, the planning artifacts, and the Technical Planner checks.
 
 Technical Planner work should treat existing Allium specifications as behavioral scope and verification constraints, but planning artifacts themselves remain Markdown-first in this repository unless a later repo convention says otherwise.
+
+## QA / Verification Lead Workflow Set
+
+The next concrete workflow set in this directory is aligned to the [`QA / Verification Lead`](D:/Projects/agoge/roles/qa-verification-lead.md) role and the QA / Verification Lead artifact library in [`artifacts/`](D:/Projects/agoge/artifacts).
+
+- [`qa-verification-planning.md`](D:/Projects/agoge/workflows/qa-verification-planning.md) turns reviewed requirements, architecture, planning, and implementation context into a verification strategy and coverage matrix.
+- [`qa-verification-review.md`](D:/Projects/agoge/workflows/qa-verification-review.md) reviews drafted verification outputs together with the available evidence, records findings, and decides whether the package is ready for downstream use.
+- [`qa-verification-handoff.md`](D:/Projects/agoge/workflows/qa-verification-handoff.md) packages completed verification outputs for downstream implementation, review, or release-adjacent roles.
+- [`qa-verification-quality-review.md`](D:/Projects/agoge/workflows/qa-verification-quality-review.md) runs the QA / Verification Lead check chain and routes remediation before downstream use.
+
+The intended QA / Verification Lead lifecycle in this repo is: reviewed requirements, architecture, and implementation handoffs -> verification strategy and coverage mapping -> evidence review -> verification handoff -> final quality review and remediation -> downstream release-adjacent or review work.
+
+## QA / Verification Lead Skill Review
+
+### Direct Support
+
+- [`requirements-verification`](D:/Projects/agoge/skills/requirements-verification/SKILL.md): preferred local-Markdown path for grounding verification scope, acceptance expectations, and coverage in upstream evidence.
+- [`handoff-packaging`](D:/Projects/agoge/skills/handoff-packaging/SKILL.md): preferred local-Markdown path for packaging reviewed verification outputs into a downstream-ready verification handoff.
+- [`research-documentation`](D:/Projects/agoge/skills/research-documentation/SKILL.md): preferred local-Markdown synthesis path when requirements, architecture, planning, implementation, or evidence context needs to be combined before verification can proceed cleanly.
+
+### Use As-Is
+
+- [`meeting-notes-and-actions`](D:/Projects/agoge/skills/meeting-notes-and-actions/SKILL.md): normalize verification workshops, walkthrough notes, test-session notes, or evidence-review transcripts.
+- [`content-research-writer`](D:/Projects/agoge/skills/content-research-writer/SKILL.md): optional external research and citation support when verification direction depends on external standards, compliance expectations, or platform guidance.
+
+### Allium-Aware Support
+
+- [`propagate`](C:/Users/ericw/.codex/skills/allium/skills/propagate/SKILL.md): useful when mature behavioral specifications should shape verification expectations or coverage direction.
+- [`weed`](C:/Users/ericw/.codex/skills/allium/skills/weed/SKILL.md): useful when verification confidence depends on checking whether implementation behavior has drifted from a governing specification.
+
+### Remaining Design Choice
+
+- No dedicated evidence-review or coverage-mapping skill exists yet. For now, coverage and review discipline is embedded directly in `requirements-verification`, the verification artifacts, and the QA / Verification Lead checks.
+
+QA / Verification Lead work should treat existing Allium specifications as behavioral verification anchors, but verification artifacts themselves remain Markdown-first in this repository unless a later repo convention says otherwise.

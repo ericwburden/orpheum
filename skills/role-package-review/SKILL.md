@@ -9,6 +9,8 @@ Review a reusable role package as a package, not as a collection of isolated fil
 
 For this repository's Role Builder workflows, this is the preferred default path for final package review and readiness assessment. Use it after the role definition and support-system design both exist.
 
+In this repository, this skill is the core review method behind the named `Role Builder hardening pass`.
+
 ## Quick start
 
 1) Read the role-definition and support-system artifacts together.
@@ -16,6 +18,15 @@ For this repository's Role Builder workflows, this is the preferred default path
 3) Identify structural gaps, duplication, broken traceability, and role drift.
 4) Record findings, remediation decisions, readiness, and remaining risks explicitly.
 5) Route remediation to the earliest artifact or design decision that introduced the defect.
+
+## Trigger phrase
+
+Treat the phrase `Role Builder hardening pass` as an explicit request to:
+
+1) review the role package as a chain
+2) identify coherence gaps, broken traceability, and role drift
+3) record findings and remediation explicitly
+4) support the required Role Builder quality-review checks
 
 ## Workflow
 
