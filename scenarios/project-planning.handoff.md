@@ -22,6 +22,7 @@ Primary participating roles:
 - [project-planning.integration-map.md](C:/Users/ericw/Projects/orpheum/scenarios/project-planning.integration-map.md)
 - [project-planning.review.md](C:/Users/ericw/Projects/orpheum/scenarios/project-planning.review.md)
 - supporting rationale in [scenario-recommendations.md](C:/Users/ericw/Projects/orpheum/notes/scenario-recommendations.md)
+- participant-readiness evidence in [solution-architect-skill-sourcing.md](C:/Users/ericw/Projects/orpheum/notes/solution-architect-skill-sourcing.md) and [technical-planner-skill-sourcing.md](C:/Users/ericw/Projects/orpheum/notes/technical-planner-skill-sourcing.md)
 
 ## Current Readiness Posture
 
@@ -53,6 +54,7 @@ Downstream consumers should preserve:
 - traceable handoffs between role-owned artifacts
 - the distinction between product direction, architecture, and planning
 - the rule that security/compliance constraints must land before architecture or planning is treated as settled when that branch is invoked
+- the role-package evidence that explains why Solution Architect and Technical Planner are ready for this scenario after the earlier hardening pass
 - the optional nature of the security/compliance branch unless local context requires it
 
 ## Entry Conditions For The Next Consumer
