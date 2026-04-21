@@ -21,6 +21,7 @@ Lifecycle window:
 - the participating role definitions for Business Analyst, Product Owner, Solution Architect, Technical Planner, and Security / Compliance Specialist
 - the role-owned workflows referenced in the integration map
 - the scenario recommendations note in [scenario-recommendations.md](C:/Users/ericw/Projects/orpheum/notes/scenario-recommendations.md)
+- participant-readiness evidence recorded in [solution-architect-skill-sourcing.md](C:/Users/ericw/Projects/orpheum/notes/solution-architect-skill-sourcing.md) and [technical-planner-skill-sourcing.md](C:/Users/ericw/Projects/orpheum/notes/technical-planner-skill-sourcing.md)
 
 ## Overall Assessment
 
@@ -39,6 +40,7 @@ Basis for judgment:
 - the optional security/compliance branch is explicit rather than hidden
 - the scenario stays inside planning-phase scope and does not collapse into live project management
 - the underlying role-package refinements required by the earlier verification pass have been addressed without introducing new scenario-only skills
+- the role-package evidence for Solution Architect and Technical Planner hardening is now preserved explicitly instead of being left as implicit branch history
 
 ## Integration Risks And Failure Modes
 
@@ -53,6 +55,7 @@ Basis for judgment:
 - Preserve explicit product-direction review before architecture depends on it.
 - Preserve explicit architecture review before implementation planning depends on it.
 - Preserve the rule that optional Security / Compliance participation should shape architecture or planning before those outputs are treated as settled.
+- Preserve the role-package evidence that materially explains why Solution Architect and Technical Planner are ready to participate in this scenario.
 - If repeated usage reveals ambiguity around the optional security/compliance branch, strengthen the trigger rules in a future scenario hardening pass.
 
 ## Follow-Up Owners

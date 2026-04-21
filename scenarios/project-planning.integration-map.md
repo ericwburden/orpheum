@@ -61,6 +61,7 @@ Shared artifacts and context that move across the scenario:
 - architecture constraints and major decisions
 - sequencing, dependency, and readiness assumptions
 - optional risk, control, and approval-sensitive guidance
+- participant-role hardening evidence when upstream role-package changes materially explain why the scenario is ready for adoption
 
 ## Handoff Contracts
 
