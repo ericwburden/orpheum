@@ -8,6 +8,8 @@ resolver = "2"
 [workspace.package]
 edition = "2024"
 license = "MIT"
+repository = "https://github.com/ericwburden/orpheum"
+homepage = "https://github.com/ericwburden/orpheum"
 version = "0.1.0"
 
 [workspace.dependencies]

@@ -3,13 +3,17 @@ name = "orpheum"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "CLI for applying Orpheum SDLC scenarios into project-local orchestration state."
+readme = "../../README.md"
 
 [dependencies]
 camino.workspace = true
 clap.workspace = true
 serde.workspace = true
 serde_json.workspace = true
-orpheum-core = { path = "../orpheum-core" }
+orpheum-core = { version = "0.1.0", path = "../orpheum-core" }
 
 [dev-dependencies]
 assert_cmd.workspace = true

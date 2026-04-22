@@ -3,6 +3,10 @@ name = "orpheum-core"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Core catalog, session, check, and doctor logic for the Orpheum SDLC workflow CLI."
+readme = "../../README.md"
 
 [dependencies]
 camino.workspace = true
