@@ -1,5 +1,8 @@
 # Orpheum
 
+[![crates.io](https://img.shields.io/crates/v/orpheum.svg)](https://crates.io/crates/orpheum)
+[![docs.rs](https://docs.rs/orpheum/badge.svg)](https://docs.rs/orpheum)
+
 `orpheum` is a scenario catalog and Rust CLI for applying reusable AI-assisted SDLC workflows to real projects.
 
 This repository now has two closely related responsibilities:
@@ -59,6 +62,24 @@ If you are wiring Orpheum into a local agent workflow, use the dedicated consume
 - [docs/agent-usage.md](C:/Users/ericw/Projects/orpheum/docs/agent-usage.md)
 
 ## Quick Start
+
+Install the published CLI:
+
+```bash
+cargo install orpheum
+```
+
+If you want to use the canonical catalog from this repository with an installed binary, point the CLI at this repo:
+
+```bash
+orpheum --catalog /path/to/orpheum scenario list
+```
+
+or set:
+
+```bash
+ORPHEUM_CATALOG=/path/to/orpheum
+```
 
 Build and run the CLI from this repository:
 
