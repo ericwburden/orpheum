@@ -103,7 +103,7 @@ orpheum check run
 orpheum doctor
 ```
 
-`orpheum init` installs a project-local skill at `.codex/skills/orpheum/SKILL.md` so local agents have an explicit Orpheum usage contract. If a `.gitignore` already exists, `init` also adds `.orpheum/` when that entry is missing.
+`orpheum init` installs or refreshes a project-local skill at `.codex/skills/orpheum/SKILL.md` so local agents have an explicit Orpheum usage contract. If a `.gitignore` already exists, `init` also adds `.orpheum/` when that entry is missing.
 
 ## Default SDLC Scenario Chain
 

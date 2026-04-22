@@ -14,6 +14,8 @@ description: Use the local Orpheum CLI and session files to discover scenarios, 
 
 Use this skill when working in a project that has the `orpheum` CLI available and may use Orpheum scenarios for AI-assisted SDLC work.
 
+This file is installed by `orpheum init` and represents the local agent contract for Orpheum usage in a consumer project.
+
 ## Purpose
 
 This skill teaches the local operating contract for Orpheum in a consumer project.
@@ -27,6 +29,23 @@ Use Orpheum to:
 - generate the current recommended prompt
 - run scenario checks
 
+## Authoritative Sources
+
+Prefer these sources in order:
+
+1. `orpheum ... --json`
+2. `.orpheum/session.json`
+3. `.orpheum/scenario.json`
+4. `.orpheum/state.json`
+5. `.orpheum/logs/checks.json`
+
+Treat these as derived views rather than source of truth:
+
+- `.orpheum/ACTIVE.md`
+- `.orpheum/prompts/current.md`
+- surrounding catalog prose
+- stale chat context
+
 ## Core Rules
 
 - Prefer `orpheum ... --json` when you need authoritative machine-readable state.
@@ -35,6 +54,22 @@ Use Orpheum to:
 - Do not infer scenario dependencies from prose files when the CLI or session JSON can tell you directly.
 - Do not create `.orpheum/` by hand. Use `orpheum scenario apply <id>`.
 - Run `orpheum check run` before claiming scenario-associated outputs are ready.
+
+## What `orpheum init` Does
+
+`orpheum init` is the project-onboarding step for agents.
+
+It:
+
+- installs this local skill at `.codex/skills/orpheum/SKILL.md`
+- appends `.orpheum/` to an existing `.gitignore` if that line is missing
+
+It does not:
+
+- apply a scenario
+- create `.orpheum/` session files
+- infer or select an active scenario
+- create a new `.gitignore` when none exists
 
 ## Normal Command Loop
 
@@ -83,6 +118,7 @@ Use them like this:
 - Do not guess the active scenario from nearby docs when `.orpheum/scenario.json` exists.
 - Do not treat stale chat context as authoritative when current session files disagree.
 - Do not silently skip scenario checks.
+- Do not treat `.orpheum/` as the durable home for finished project artifacts.
 "#;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -183,5 +219,29 @@ mod tests {
 
         assert!(!result.skill_installed);
         assert!(!result.gitignore_updated);
+    }
+
+    #[test]
+    fn init_refreshes_outdated_skill_content() {
+        let project = tempdir().expect("tempdir");
+        let project_root =
+            Utf8PathBuf::from_path_buf(project.path().to_path_buf()).expect("utf8 temp path");
+        fs::create_dir_all(project_root.join(".codex").join("skills").join("orpheum"))
+            .expect("skill dir");
+        fs::write(
+            project_root
+                .join(".codex")
+                .join("skills")
+                .join("orpheum")
+                .join("SKILL.md"),
+            "# old skill\n",
+        )
+        .expect("stale skill body");
+
+        let result = init_project(&project_root).expect("init should succeed");
+        let installed = fs::read_to_string(result.skill_file).expect("skill file");
+
+        assert!(result.skill_installed);
+        assert_eq!(installed, ORPHEUM_SKILL_BODY);
     }
 }
