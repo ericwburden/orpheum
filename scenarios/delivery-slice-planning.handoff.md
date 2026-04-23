@@ -8,6 +8,8 @@ Package the reusable `Delivery Slice Planning` scenario for downstream adopters,
 
 `Delivery Slice Planning` is a reusable multi-role scenario that starts from a broader reviewed planning package, selects the next priority candidate, turns that candidate into one bounded delivery slice while preserving architecture and dependency guardrails, optionally adds early verification or security/compliance framing when those concerns materially constrain the slice, and hands one slice-sized package downstream into `Implementation and Release Prep`.
 
+It should preserve enduring product and architecture direction while narrowing the backlog, review, handoff, and planning artifacts that are supposed to carry the current slice.
+
 Primary participating roles:
 
 - `Product Owner`
@@ -55,6 +57,7 @@ Downstream consumers should preserve:
 - the rule that the scenario outputs one bounded slice package
 - the distinction between Product Owner priority selection and the later architecture-and-planning work that makes the final slice boundary honest
 - the distinction between broader project planning and slice-sized downstream work
+- the distinction between enduring north-star artifacts and narrower slice-local artifacts
 - explicit slice exclusions, deferred scope, and dependency hotspots
 - the rule that architecture-sensitive seams should stay visible when the slice is shaped
 - the rule that optional QA / Verification Lead and Security / Compliance Specialist branches should land before the slice is treated as settled when they materially constrain it
@@ -75,6 +78,7 @@ Before using this scenario, the next consumer should confirm:
 
 - avoid treating the broader project plan as if it were already a bounded implementation slice
 - avoid letting Product Owner prioritization masquerade as technical decomposition without architectural or planning confirmation
+- avoid letting the active slice overwrite broader product-direction or architecture-direction artifacts when the slice should live in lower-layer artifacts instead
 - avoid letting Technical Planner absorb unresolved architecture or product ambiguity into slice prose
 - avoid treating this scenario as sprint administration or team-capacity management
 - avoid invoking QA / Verification Lead or Security / Compliance Specialist without a real slice-shaping trigger

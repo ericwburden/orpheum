@@ -45,6 +45,7 @@ Validate that the solution architecture artifact clearly expresses the intended 
 ## Criteria
 
 - The problem and scope are stated explicitly.
+- The artifact makes clear whether it preserves enduring system architecture or a narrower architecture decision horizon.
 - Input context from upstream BA artifacts is identified.
 - Architectural drivers are explicit.
 - The system boundary is explicit.
@@ -53,6 +54,7 @@ Validate that the solution architecture artifact clearly expresses the intended 
 - Important contract assumptions or failure expectations are explicit when they materially affect the design.
 - Constraints, risks, and open questions are visible.
 - Decisions already made and locked constraints are explicit enough that downstream roles do not have to infer them from surrounding prose.
+- The artifact does not collapse broader architecture direction into the currently selected delivery slice unless the broader architecture posture has actually changed.
 - The relationship to any existing behavioral specification is explicit when specification work materially constrains the architecture.
 - Architecture fitness criteria are explicit enough for downstream verification or planning to use.
 - Trust boundaries and human control points are recorded when AI-enabled or agentic behavior is relevant.

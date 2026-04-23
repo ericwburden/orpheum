@@ -29,6 +29,7 @@ Validate that Product Owner outputs stay inside product direction, prioritizatio
 - The output does not design the technical solution or implementation approach.
 - The output does not collapse into sprint administration, team management, or project-status reporting.
 - The output does not treat backlog ordering as a substitute for explicit product direction or accountable tradeoff decisions.
+- The output does not overwrite enduring product-direction artifacts with slice-local framing that belongs in backlog, review, handoff, or planning artifacts.
 - The output does not imply that prioritized work is already committed for implementation, sprint intake, or release when that decision still belongs downstream.
 - The output does not present product-level acceptance guidance as if it were already a full behavioral specification, architecture package, or verification plan.
 - The output remains focused on product goal, priority posture, acceptance-oriented conditions, tradeoffs, and downstream decision framing.

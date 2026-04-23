@@ -29,6 +29,7 @@ Validate that the Product Owner artifact chain preserves linkage from validated 
 - The product decision review references the product direction and prioritization artifacts explicitly.
 - The product handoff references the full reviewed product package.
 - Material tradeoffs, conditions, and deferred scope remain visible across the chain.
+- Enduring product direction remains distinguishable from slice-specific prioritization when those scopes differ.
 - Existing behavioral specifications or specification needs are referenced when they materially constrain product choices.
 
 ## Scoring Or Outcome

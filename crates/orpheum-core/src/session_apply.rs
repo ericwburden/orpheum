@@ -60,6 +60,7 @@ pub fn apply_scenario(
         session_id: session_id.clone(),
         scenario_id: resolved.scenario.id.clone(),
         scenario_version: resolved.scenario.version,
+        last_orpheum_cli_version: Some(crate::session_fs::current_orpheum_cli_version().into()),
         applied_at,
         orpheum_source: catalog.paths.root.clone(),
         source_revision: git_revision(&catalog.paths.root),

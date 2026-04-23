@@ -98,6 +98,8 @@ Capture the reusable `Delivery Slice Planning` scenario that turns a broader rev
 
 Use this scenario when a team already has project-level planning but needs a disciplined multi-role step before implementation begins on the next slice.
 
+This scenario should narrow prioritization and planning artifacts for the current slice without overwriting enduring upstream product or architecture direction unless those broader directions have materially changed.
+
 ## Scenario Name And Intent
 
 `Delivery Slice Planning`
@@ -152,7 +154,7 @@ Exit condition:
 ## Core Sequence
 
 1. Consume the broader reviewed planning package and identify the next priority candidate through Product Owner outputs.
-2. Confirm that the candidate can become a bounded slice without silently crossing important architecture, interface, dependency, or trust-boundary seams.
+2. Preserve enduring upstream direction explicitly, then confirm that the candidate can become a bounded slice without silently crossing important architecture, interface, dependency, or trust-boundary seams.
 3. Turn that candidate into an explicit bounded slice through Solution Architect and Technical Planner outputs, including slice-sized implementation strategy, dependency posture, readiness view, and downstream implementation handoff.
 4. Optionally bring in early QA / Verification Lead framing before the slice is treated as settled when confidence targets, evidence expectations, or acceptance-sensitive hotspots materially shape the slice before coding begins.
 5. Optionally bring in Security / Compliance Specialist framing before the slice is treated as settled when obligations, controls, or approval-sensitive constraints materially shape slice boundaries or readiness.
@@ -164,10 +166,14 @@ Exit condition:
 
 - the selected priority candidate must be explicit enough that downstream roles can shape one honest slice from it
 - product review must be explicit before downstream roles treat that candidate as the current priority unit
+- enduring product and architecture direction must remain distinguishable from slice-local decisions unless the broader posture itself changed
+- product-direction should preserve enduring product posture, and solution-architecture should preserve enduring system architecture, unless those broader directions materially changed
+- backlog-prioritization should identify the next bounded slice, while implementation-strategy and sequencing-and-dependencies should define how that slice is executed
 - architecture-sensitive constraints must remain explicit when the selected slice crosses important seams or dependencies
 - planning review must be explicit before the slice is treated as implementation-ready
 - verification or security/compliance review should become explicit gates when those concerns materially constrain what counts as an honest slice
 - semantic artifact review is a required checkpoint before closure; the review should happen in Planning Mode or the host environment's nearest equivalent
+- semantic review should explicitly test for scope bleed, asking whether a statement is enduring direction or only true of the current slice
 - human approval remains visible when the slice boundary depends on unresolved tradeoffs, sensitive controls, or risky scope compression
 
 ## Scenario Constraints And Non-Goals
@@ -177,6 +183,7 @@ Exit condition:
 - This scenario does not absorb implementation execution, code review, verification execution, or release preparation.
 - This scenario is not a sprint administration layer, staffing mechanism, or progress tracker.
 - This scenario should stay reusable across projects and should not be overfit to one team cadence or delivery ceremony.
+- This scenario must not silently rewrite upstream north-star artifacts into slice-local artifacts just because the active task is slice planning.
 
 ## Open Questions And Design Gaps
 

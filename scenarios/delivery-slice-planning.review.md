@@ -49,6 +49,7 @@ Basis for judgment:
 
 - Teams may still skip this bridge and jump directly from project planning into implementation if the slice boundary is treated as implicit.
 - Product Owner and Technical Planner boundaries may blur if product prioritization starts masquerading as technical decomposition without explicit architecture or planning support.
+- Product or architecture artifacts may suffer scope bleed if slice-local decisions are allowed to overwrite enduring north-star artifacts instead of being routed into the right lower-layer artifacts.
 - Teams may still overread the scenario as sprint planning or delivery administration if slice-shaping boundaries are not preserved.
 - Optional QA / Verification Lead or Security / Compliance Specialist participation may be invoked inconsistently until stronger trigger examples emerge from repeated usage, or too late if teams treat those branches as trailing packaging instead of slice-shaping constraints.
 
@@ -56,10 +57,12 @@ Basis for judgment:
 
 - Preserve the distinction between broader project planning and bounded slice selection.
 - Preserve the distinction between Product Owner priority selection and the later architecture-and-planning work that turns that candidate into one honest bounded slice.
+- Preserve artifact-scope layering so enduring product or architecture direction stays broad while backlog, review, handoff, and planning artifacts carry current-slice specificity.
 - Preserve the rule that one selected slice must be explicit enough to serve as one honest input package for `Implementation and Release Prep`.
 - Preserve the rule that architecture-sensitive seams and dependency hotspots should stay visible when shaping the slice.
 - Preserve the rule that optional QA / Verification Lead and Security / Compliance Specialist branches must land before the slice is treated as settled when they materially constrain what counts as an honest slice.
 - Preserve the optional nature of QA / Verification Lead and Security / Compliance Specialist unless real slice-shaping triggers require them.
+- Strengthen semantic review prompts so one explicit question is whether any artifact was accidentally narrowed when it should have remained broader.
 - If repeated usage shows that slices still arrive oversized downstream, strengthen the slice-boundary guidance here rather than weakening the downstream scenario.
 
 ## Follow-Up Owners

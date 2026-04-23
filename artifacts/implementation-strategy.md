@@ -27,6 +27,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand what implementation approach is being proposed, why the slices are shaped that way, what assumptions or constraints matter, what enabling work is required, and where the main planning risks still sit.
 
+This artifact is where the current slice or execution decomposition should narrow, while preserving any broader product and architecture posture inherited from upstream artifacts.
+
 ## Related Checks
 
 - Primary: [`implementation-strategy.check.md`](D:/Projects/agoge/checks/implementation-strategy.check.md)
@@ -36,6 +38,8 @@ This artifact is complete when a downstream reader can understand what implement
 ## Planning Scope And Objective
 
 Summarize the implementation problem this plan is organizing and the part of the delivery effort this strategy covers.
+
+If this strategy covers the currently selected bounded slice, say so explicitly here rather than pushing slice-local framing back into enduring product or architecture artifacts.
 
 ## Input Context
 
@@ -63,6 +67,8 @@ Describe the overall implementation approach, such as phased rollout, vertical s
 ## Slice Strategy
 
 Describe how implementation is being sliced and why that slicing approach was chosen.
+
+This is the primary planning section for turning broader direction into current-slice execution structure.
 
 ## Workstream Overview
 

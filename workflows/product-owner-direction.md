@@ -67,14 +67,16 @@ Turn validated requirements, product feedback, and delivery learnings into an ex
 1. Read the validated discovery or requirements together with the product feedback, delivery learnings, and other evidence that materially shape the current decision.
 2. If the context is spread across multiple local sources, use `research-documentation` first to synthesize the current product problem, value signals, and constraints.
 3. Instantiate [`artifacts/product-direction.md`](D:/Projects/orpheum/artifacts/product-direction.md) and [`artifacts/backlog-prioritization.md`](D:/Projects/orpheum/artifacts/backlog-prioritization.md) into the project workspace if working copies do not already exist.
-4. Use `product-priority-framing` to populate the product direction artifact with decision scope, validated inputs, product goal, target beneficiaries, value hypotheses, acceptance intent, behavioral guardrails, constraints, priority themes, and open questions.
-5. Use `product-priority-framing` to populate the backlog prioritization artifact with ordered work, rationale, acceptance-oriented conditions, deferred scope, sequencing notes, stakeholder tensions, and reprioritization triggers.
-6. Run [`product-direction.check.md`](D:/Projects/orpheum/checks/product-direction.check.md), [`backlog-prioritization.check.md`](D:/Projects/orpheum/checks/backlog-prioritization.check.md), [`product-traceability.check.md`](D:/Projects/orpheum/checks/product-traceability.check.md), and [`product-owner-boundary.check.md`](D:/Projects/orpheum/checks/product-owner-boundary.check.md).
+4. Confirm which statements are enduring product posture versus only true of the currently selected slice, then keep that scope separation explicit before drafting.
+5. Use `product-priority-framing` to populate the product direction artifact with decision scope, validated inputs, product goal, target beneficiaries, value hypotheses, acceptance intent, behavioral guardrails, constraints, priority themes, and open questions without collapsing it into slice-local wording unless the broader product direction changed.
+6. Use `product-priority-framing` to populate the backlog prioritization artifact with ordered work, rationale, acceptance-oriented conditions, deferred scope, sequencing notes, stakeholder tensions, and reprioritization triggers, using it as the primary place to express the next bounded slice when applicable.
+7. Run [`product-direction.check.md`](D:/Projects/orpheum/checks/product-direction.check.md), [`backlog-prioritization.check.md`](D:/Projects/orpheum/checks/backlog-prioritization.check.md), [`product-traceability.check.md`](D:/Projects/orpheum/checks/product-traceability.check.md), and [`product-owner-boundary.check.md`](D:/Projects/orpheum/checks/product-owner-boundary.check.md).
 
 ## Decision Points
 
 - If the current choice depends on discovery that is not actually validated, route that gap upstream rather than disguising it as a product decision.
 - If the most important product choice is about what not to do now, preserve that deferred scope explicitly.
+- If a statement is only true of the current bounded slice, route it into backlog or downstream planning artifacts rather than overwriting enduring product-direction scope.
 - If acceptance intent is strong enough that it should become or refine a behavioral specification, use the existing Allium skills rather than burying it in backlog prose.
 - If acceptance-oriented guidance starts turning into full behavioral definition or test design, route that work to specification, architecture, or verification instead of absorbing it here.
 - If sequencing needs exceed product-level ordering and become technical execution structure, route that work to downstream planning instead of absorbing it here.

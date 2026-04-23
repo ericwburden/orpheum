@@ -58,6 +58,10 @@ When the environment looks wrong:
 
 1. `orpheum doctor --json`
 
+When the CLI warns that local Orpheum guidance is stale:
+
+1. `orpheum update --json`
+
 ## Session Files
 
 When a scenario is active, expect these files under `.orpheum/`:
@@ -93,6 +97,8 @@ It does not:
 - create `.orpheum/` session files
 - infer or select an active scenario
 - create a new `.gitignore` when none exists
+
+`orpheum update` uses the same refresh path for an already initialized project and is the recommended response when the CLI warns that the active session was created by an older Orpheum version.
 
 ## Core Rules
 

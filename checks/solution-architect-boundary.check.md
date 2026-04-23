@@ -27,6 +27,7 @@ Validate that Solution Architect outputs stay inside architecture role boundarie
 
 - The output does not redefine business objectives or requirements without routing those issues upstream.
 - The output does not collapse into implementation tasking, sprint planning, or delivery management.
+- The output does not overwrite enduring architecture artifacts with slice-local execution framing that belongs in planning artifacts.
 - Architectural assumptions are explicit rather than treated as confirmed requirements.
 - The work remains focused on system shape, decisions, constraints, and downstream technical framing.
 - AI trust boundaries or control points are identified when relevant without drifting into full governance ownership.

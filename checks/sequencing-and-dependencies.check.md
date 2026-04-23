@@ -41,6 +41,7 @@ Validate that sequencing, dependencies, critical path assumptions, and paralleli
 
 - The sequencing summary is explicit.
 - Workstream order is clear.
+- The artifact keeps sequencing detail in the planning layer rather than collapsing broader product or architecture artifacts into work-order prose.
 - Meaningful dependencies are identified together with affected workstreams, dependency ownership where known, and failure consequences.
 - The critical path is visible.
 - Parallelization opportunities are explicit and bounded by clear assumptions.

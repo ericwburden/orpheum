@@ -4,8 +4,8 @@ use camino::{Utf8Path, Utf8PathBuf};
 use clap::{Args, Parser, Subcommand};
 use orpheum_core::{
     Catalog, CheckRunReport, CheckStatusValue, DoctorReport, OrpheumError, ResolvedScenario,
-    ScenarioListItem, apply_scenario, generate_current_prompt, init_project, read_session_files,
-    run_doctor,
+    ScenarioListItem, apply_scenario, cli_refresh_notice, generate_current_prompt, init_project,
+    read_session_files, run_doctor,
 };
 
 #[derive(Debug, Parser)]
@@ -21,6 +21,7 @@ struct Cli {
 #[derive(Debug, Subcommand)]
 enum Commands {
     Init(InitArgs),
+    Update(InitArgs),
     Scenario(ScenarioCommand),
     Status(OutputArgs),
     Prompt(PromptCommand),
@@ -110,14 +111,19 @@ fn run(cli: Cli) -> Result<(), OrpheumError> {
     let cwd = current_dir_utf8()?;
     let catalog_arg = cli.catalog.as_deref();
 
+    let should_check_refresh_notice = !matches!(cli.command, Commands::Init(_) | Commands::Update(_));
+    if should_check_refresh_notice {
+        emit_refresh_notice_if_needed(&cwd)?;
+    }
+
     match cli.command {
-        Commands::Init(args) => {
+        Commands::Init(args) | Commands::Update(args) => {
             let explicit_catalog = args.catalog.as_deref().map(Utf8Path::new);
             let result = init_project(&cwd, explicit_catalog)?;
             if args.json {
                 println!("{}", serde_json::to_string_pretty(&result)?);
             } else {
-                println!("Initialized Orpheum guidance for {}", result.project_root);
+                println!("Refreshed Orpheum guidance for {}", result.project_root);
                 println!("Project state: {}", result.project_state.as_str());
                 println!("Local skill: {}", result.skill_file);
                 println!("Catalog source: {}", result.catalog_source.as_str());
@@ -247,6 +253,13 @@ fn run(cli: Cli) -> Result<(), OrpheumError> {
         }
     }
 
+    Ok(())
+}
+
+fn emit_refresh_notice_if_needed(project_root: &Utf8Path) -> Result<(), OrpheumError> {
+    if let Some(message) = cli_refresh_notice(project_root)? {
+        eprintln!("WARNING: {message}");
+    }
     Ok(())
 }
 

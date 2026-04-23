@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2026-04-23
+
+### Added
+
+- Explicit artifact-scope layering guidance across Product Owner, Solution Architect, and Technical Planner templates, workflows, scenario contracts, and checks so enduring direction stays distinct from current-slice execution detail.
+- `orpheum update` as the explicit refresh path for initialized projects when local guidance or active-session metadata should be refreshed.
+- Session-level CLI version recording in `.orpheum/session.json` via `last_orpheum_cli_version`.
+- Release notes for this minor version at `docs/release/0.3.0.md`.
+- Repo `.gitignore` coverage for generated local state and build output.
+
+### Changed
+
+- Bumped the workspace crates from `0.2.0` to `0.3.0`.
+- `delivery-slice-planning` now states much more explicitly which artifacts should remain broad and which artifacts should carry the currently selected bounded slice.
+- Product, architecture, and planning checks now verify enduring-context versus current-slice separation instead of leaving that distinction implicit.
+- Active-session commands now warn when the running Orpheum CLI is newer than the session's recorded CLI version and direct users to `orpheum update`.
+- `orpheum init` and `orpheum update` now refresh the recorded CLI version for active sessions.
+
+### Fixed
+
+- Scope bleed during slice planning is now harder to introduce because slice-local statements are guided downward into prioritization and planning artifacts instead of overwriting broader product or architecture artifacts.
+- Older sessions created before CLI-version recording now trigger an explicit refresh warning instead of silently proceeding with stale local guidance expectations.
+
 ## [0.2.0] - 2026-04-23
 
 ### Added
@@ -19,6 +42,8 @@ All notable changes to this project will be documented in this file.
 - `orpheum init --json` now reports project state, catalog source/root, onboarding file, and local config file.
 - `orpheum doctor --json` now reports project state, local-config status, catalog-source status, and recovery commands even when no active session exists.
 - Scenario prompts and contracts now treat semantic artifact review as a required closeout step instead of optional polish.
+- Delivery-slice-planning and Product Owner guidance now explicitly protect artifact-scope layering so enduring direction stays broad while slice-specific detail is routed into backlog, review, handoff, and planning artifacts.
+- Architecture and planning guidance now explicitly separate enduring system-architecture artifacts from slice-execution artifacts so slice planning does not bleed upward into solution architecture.
 
 ### Fixed
 

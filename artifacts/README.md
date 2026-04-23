@@ -133,6 +133,10 @@ Use this set when validated requirements, feedback, and delivery learnings need 
 
 The intended Product Owner lifecycle is: select template, instantiate working copy, define product direction, make backlog priorities explicit, review the current product posture, package the product handoff, run checks, remediate failures, and only then move the product package downstream.
 
+Artifact layering matters in this set: `product-direction` should preserve enduring product posture unless the product itself changed, while `backlog-prioritization`, `product-decision-review`, `product-handoff`, and downstream planning artifacts should carry the currently selected slice or bounded next-step posture.
+
+The same separation should hold across downstream technical artifacts: `solution-architecture` should preserve enduring system architecture unless the architecture itself changed, while `implementation-strategy` and `sequencing-and-dependencies` should carry current-slice execution decomposition and ordering.
+
 ## Security / Compliance Specialist Artifacts
 
 The next concrete artifact set in this directory is aligned to the [`Security / Compliance Specialist`](D:/Projects/orpheum/roles/security-compliance-specialist.md) role.

@@ -37,6 +37,7 @@ Use after more than one Solution Architect artifact exists. Do not apply this ch
 - Architecture decisions reflect the actual solution architecture rather than an unstated alternative.
 - The architecture review reflects the actual strengths, risks, and unresolved issues in the architecture artifacts rather than inventing a separate narrative.
 - The architecture handoff preserves the reasoning, risks, and review outcome already captured in earlier architecture artifacts.
+- Enduring system architecture remains distinguishable from slice-specific planning or execution decomposition when those scopes differ.
 - Requirement or business ambiguity is surfaced explicitly rather than solved silently inside the architecture.
 - Contradictions, missing links, or unsupported architectural assumptions are explicit.
 

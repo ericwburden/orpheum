@@ -39,6 +39,8 @@ pub struct SessionManifest {
     pub session_id: String,
     pub scenario_id: String,
     pub scenario_version: u32,
+    #[serde(default)]
+    pub last_orpheum_cli_version: Option<String>,
     pub applied_at: String,
     pub orpheum_source: Utf8PathBuf,
     pub source_revision: Option<String>,

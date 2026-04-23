@@ -35,6 +35,27 @@ fn copy_expected_artifacts(project_root: &std::path::Path) {
     }
 }
 
+fn set_session_cli_version(project_root: &std::path::Path, version: Option<&str>) {
+    let session_file = project_root.join(".orpheum").join("session.json");
+    let mut session: Value =
+        serde_json::from_str(&fs::read_to_string(&session_file).expect("session file readable"))
+            .expect("session json");
+    match version {
+        Some(value) => session["last_orpheum_cli_version"] = Value::String(value.to_string()),
+        None => {
+            session
+                .as_object_mut()
+                .expect("session object")
+                .remove("last_orpheum_cli_version");
+        }
+    }
+    fs::write(
+        session_file,
+        serde_json::to_string_pretty(&session).expect("session json write"),
+    )
+    .expect("session file updated");
+}
+
 #[test]
 fn scenario_list_works() {
     Command::cargo_bin("orpheum")
@@ -374,4 +395,144 @@ fn doctor_reports_local_config_status_and_recovery_commands() {
         .stdout(predicate::str::contains(
             "\"message\": \"local Orpheum config file not found\"",
         ));
+}
+
+#[test]
+fn status_warns_when_cli_is_newer_than_recorded_session_version() {
+    let project = tempdir().expect("tempdir");
+    let project_path = project.path().to_string_lossy().to_string();
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .args([
+            "scenario",
+            "apply",
+            "project-planning",
+            "--project",
+            &project_path,
+            "--json",
+        ])
+        .assert()
+        .success();
+
+    set_session_cli_version(project.path(), Some("0.1.0"));
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .current_dir(project.path())
+        .args(["status", "--json"])
+        .assert()
+        .success()
+        .stderr(predicate::str::contains(
+            "Run `orpheum update` to refresh local Orpheum guidance",
+        ))
+        .stdout(predicate::str::contains("\"scenario_id\": \"project-planning\""));
+}
+
+#[test]
+fn init_refreshes_recorded_session_cli_version_for_active_project() {
+    let project = tempdir().expect("tempdir");
+    let project_path = project.path().to_string_lossy().to_string();
+    let catalog_path = repo_root().to_string_lossy().to_string();
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .args([
+            "scenario",
+            "apply",
+            "project-planning",
+            "--project",
+            &project_path,
+            "--json",
+        ])
+        .assert()
+        .success();
+
+    set_session_cli_version(project.path(), Some("0.1.0"));
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .current_dir(project.path())
+        .args(["init", "--catalog", &catalog_path, "--json"])
+        .assert()
+        .success();
+
+    let session_file = project.path().join(".orpheum").join("session.json");
+    let session: Value =
+        serde_json::from_str(&fs::read_to_string(&session_file).expect("session file readable"))
+            .expect("session json");
+    assert_eq!(
+        session["last_orpheum_cli_version"].as_str(),
+        Some(env!("CARGO_PKG_VERSION"))
+    );
+}
+
+#[test]
+fn status_warns_when_session_has_no_recorded_cli_version() {
+    let project = tempdir().expect("tempdir");
+    let project_path = project.path().to_string_lossy().to_string();
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .args([
+            "scenario",
+            "apply",
+            "project-planning",
+            "--project",
+            &project_path,
+            "--json",
+        ])
+        .assert()
+        .success();
+
+    set_session_cli_version(project.path(), None);
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .current_dir(project.path())
+        .args(["status", "--json"])
+        .assert()
+        .success()
+        .stderr(predicate::str::contains(
+            "does not record a CLI version",
+        ))
+        .stdout(predicate::str::contains("\"scenario_id\": \"project-planning\""));
+}
+
+#[test]
+fn update_refreshes_recorded_session_cli_version_for_active_project() {
+    let project = tempdir().expect("tempdir");
+    let project_path = project.path().to_string_lossy().to_string();
+    let catalog_path = repo_root().to_string_lossy().to_string();
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .args([
+            "scenario",
+            "apply",
+            "project-planning",
+            "--project",
+            &project_path,
+            "--json",
+        ])
+        .assert()
+        .success();
+
+    set_session_cli_version(project.path(), Some("0.1.0"));
+
+    Command::cargo_bin("orpheum")
+        .expect("binary")
+        .current_dir(project.path())
+        .args(["update", "--catalog", &catalog_path, "--json"])
+        .assert()
+        .success();
+
+    let session_file = project.path().join(".orpheum").join("session.json");
+    let session: Value =
+        serde_json::from_str(&fs::read_to_string(&session_file).expect("session file readable"))
+            .expect("session json");
+    assert_eq!(
+        session["last_orpheum_cli_version"].as_str(),
+        Some(env!("CARGO_PKG_VERSION"))
+    );
 }

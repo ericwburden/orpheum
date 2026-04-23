@@ -75,14 +75,16 @@ Turn validated BA outputs and explicit product direction into a proposed solutio
 2. If architecture notes or workshop transcripts exist, normalize them with `meeting-notes-and-actions` before drafting.
 3. If technical or domain context is spread across multiple local files, use `research-documentation` to synthesize the relevant constraints and reference points.
 4. Instantiate [`artifacts/solution-architecture.md`](D:/Projects/agoge/artifacts/solution-architecture.md) and [`artifacts/architecture-decisions.md`](D:/Projects/agoge/artifacts/architecture-decisions.md) into the project workspace if working copies do not already exist.
-5. Use `architecture-design` to populate the solution architecture artifact with problem scope, input context, architectural drivers, system boundary, major components, major flows, interfaces and contracts, integrations, constraints, specification relationship, architecture fitness criteria, trust boundaries, and risks.
-6. Use `architecture-design` to populate the architecture decisions artifact with major decisions, alternatives, rationale, consequences, interface implications, deferred decisions, assumptions, and tradeoffs.
-7. Run [`solution-architecture.check.md`](D:/Projects/agoge/checks/solution-architecture.check.md), [`architecture-decisions.check.md`](D:/Projects/agoge/checks/architecture-decisions.check.md), [`architecture-traceability.check.md`](D:/Projects/agoge/checks/architecture-traceability.check.md), and [`solution-architect-boundary.check.md`](D:/Projects/agoge/checks/solution-architect-boundary.check.md).
+5. Confirm which statements describe enduring system architecture versus only the current slice's execution shape before drafting.
+6. Use `architecture-design` to populate the solution architecture artifact with problem scope, input context, architectural drivers, system boundary, major components, major flows, interfaces and contracts, integrations, constraints, specification relationship, architecture fitness criteria, trust boundaries, and risks without collapsing the artifact into slice-local planning unless the broader architecture changed.
+7. Use `architecture-design` to populate the architecture decisions artifact with major decisions, alternatives, rationale, consequences, interface implications, deferred decisions, assumptions, and tradeoffs.
+8. Run [`solution-architecture.check.md`](D:/Projects/agoge/checks/solution-architecture.check.md), [`architecture-decisions.check.md`](D:/Projects/agoge/checks/architecture-decisions.check.md), [`architecture-traceability.check.md`](D:/Projects/agoge/checks/architecture-traceability.check.md), and [`solution-architect-boundary.check.md`](D:/Projects/agoge/checks/solution-architect-boundary.check.md).
 
 ## Decision Points
 
 - If upstream BA artifacts are still ambiguous, record the gap and route it back upstream instead of solving it silently in architecture.
 - If explicit product direction exists and materially affects architectural tradeoffs, preserve that input explicitly instead of forcing the architecture to infer product posture from BA artifacts alone.
+- If a statement is only true of the current bounded slice's execution plan, route it into implementation strategy or sequencing artifacts rather than rewriting enduring architecture artifacts.
 - If Allium or other behavioral specifications are missing or unstable where architecture depends on them materially, route that gap back to discovery or specification work rather than inventing the behavior in architecture.
 - If multiple plausible solution directions exist, record the alternatives and decision drivers rather than defaulting to one without explanation.
 - If important boundaries depend on interface ownership or contract assumptions, make them explicit here instead of leaving them for downstream roles to infer.

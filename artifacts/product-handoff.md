@@ -28,6 +28,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand what product direction is being handed off, what work is prioritized, what conditions still matter, who owns follow-up, and what should happen next.
 
+The handoff should preserve both the broader product posture and the current slice or priority posture when those operate at different scope layers.
+
 ## Related Checks
 
 - Primary: [`product-handoff.check.md`](D:/Projects/orpheum/checks/product-handoff.check.md)
@@ -38,6 +40,8 @@ This artifact is complete when a downstream reader can understand what product d
 
 Summarize the current product goal, target value, and major scope boundary being handed off.
 
+Do not restate this section as if it were only the currently selected slice unless the broader product direction has actually changed.
+
 ## Product Package Included
 
 Reference the product direction, backlog prioritization, product decision review, and key supporting discovery or evidence artifacts that define the current package.
@@ -45,6 +49,8 @@ Reference the product direction, backlog prioritization, product decision review
 ## Current Priority Posture
 
 State what work is prioritized next and whether the package is ready, conditional, or blocked for the intended downstream consumer.
+
+Use this section to express the currently selected slice or bounded next step when that detail is narrower than the enduring product direction.
 
 Make any scope, timing, evidence, or approval limits explicit so downstream consumers do not treat the handoff as blanket product approval.
 

@@ -28,6 +28,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand what work is prioritized next, why it is ordered that way, what acceptance or value conditions still matter, and what has been deferred or excluded.
 
+When a scenario is narrowing one bounded delivery slice, this artifact is the primary place to express that current slice choice without rewriting broader product direction.
+
 ## Related Checks
 
 - Primary: [`backlog-prioritization.check.md`](D:/Projects/orpheum/checks/backlog-prioritization.check.md)
@@ -38,9 +40,13 @@ This artifact is complete when a downstream reader can understand what work is p
 
 State which backlog slice, initiative set, release horizon, or planning window this prioritization covers.
 
+If the current work is a bounded delivery slice, say so explicitly here rather than collapsing enduring product-direction scope upward into slice language.
+
 ## Prioritized Work Set
 
 List the currently prioritized initiatives, features, slices, or work items in order.
+
+Make the selected next slice explicit when one bounded slice is the current planning unit.
 
 ## Ordering Rationale
 

@@ -28,6 +28,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand what outcome the product is trying to achieve, for whom, why it matters now, what constraints still apply, and what broad priority themes should guide the next decisions.
 
+This artifact should preserve enduring product posture across downstream slice-selection work unless the product itself has materially changed.
+
 ## Related Checks
 
 - Primary: [`product-direction.check.md`](D:/Projects/orpheum/checks/product-direction.check.md)
@@ -37,6 +39,10 @@ This artifact is complete when a downstream reader can understand what outcome t
 ## Decision Scope
 
 State which product area, initiative, release horizon, customer segment, or decision window this direction covers.
+
+Make it explicit whether this scope is whole-product, initiative-level, or otherwise enduring across multiple slices.
+
+Do not silently narrow this artifact to the currently selected delivery slice unless the broader product direction has actually changed.
 
 ## Validated Inputs
 
@@ -71,6 +77,8 @@ Describe the business, regulatory, contractual, operational, trust-boundary, or 
 ## Priority Themes
 
 List the major themes or categories of work that should guide what gets prioritized next.
+
+Keep these themes broad enough to guide multiple backlog choices when the product posture is broader than one bounded slice.
 
 ## Open Questions And Decision Needs
 

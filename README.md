@@ -8,7 +8,7 @@
 Current release documentation:
 
 - [CHANGELOG.md](C:/Users/ericw/Projects/orpheum/CHANGELOG.md)
-- [Orpheum 0.2.0 Release Notes](C:/Users/ericw/Projects/orpheum/docs/release/0.2.0.md)
+- [Orpheum 0.3.0 Release Notes](C:/Users/ericw/Projects/orpheum/docs/release/0.3.0.md)
 
 This repository now has two closely related responsibilities:
 
@@ -36,6 +36,7 @@ In practice, that means:
 The Rust workspace lives at the repo root and currently ships these v1 commands:
 
 - `orpheum init`
+- `orpheum update`
 - `orpheum scenario list`
 - `orpheum scenario show <id>`
 - `orpheum scenario apply <id>`
@@ -130,6 +131,7 @@ From the target project root, you can then run:
 
 ```bash
 orpheum init
+orpheum update
 orpheum status
 orpheum prompt current
 orpheum check run
@@ -137,6 +139,8 @@ orpheum doctor
 ```
 
 `orpheum init` installs or refreshes a project-local skill at `.codex/skills/orpheum/SKILL.md`, persists a resolved catalog root in `.codex/orpheum/config.json`, writes a repo-root `ORPHEUM.md` onboarding file, and adds `.orpheum/` to an existing `.gitignore` when that entry is missing.
+
+`orpheum update` is the explicit refresh path for existing projects. Use it when a newer CLI warns that local Orpheum guidance should be refreshed.
 
 ## Default SDLC Scenario Chain
 

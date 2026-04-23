@@ -27,12 +27,12 @@ This integration map applies to the reusable `Delivery Slice Planning` scenario 
 ## Workflow Inputs, Outputs, And Shared Artifacts
 
 - Product Owner workflows consume the broader planning and product context, then produce:
-  - updated product direction
+  - preserved or deliberately updated product direction, with enduring scope retained unless the broader product posture truly changed
   - slice-oriented backlog prioritization
   - product decision review
   - product handoff
 - Solution Architect workflows consume the current requirements and slice-oriented product posture, then produce:
-  - architecture confirmation or refinement artifacts for the selected slice
+  - architecture confirmation or refinement artifacts that preserve enduring system architecture unless the broader architecture direction truly changed
   - architecture review
   - architecture handoff
 - Technical Planner workflows consume the reviewed architecture and requirements package, then produce:
@@ -62,8 +62,10 @@ Shared artifacts and context that move across the scenario:
 
 - broader planning package -> Product Owner
   - Product Owner should receive the broader reviewed plan as the context for selecting the next priority candidate, not as a license to re-plan the whole project from scratch
+  - Product Owner should preserve enduring product direction and route slice-specific narrowing into backlog, review, handoff, and planning artifacts instead of collapsing north-star artifacts into slice language
 - Product Owner -> Solution Architect
   - Solution Architect should receive an explicit next-priority posture with current priority, acceptance-sensitive guardrails, and clear exclusions rather than only a broad roadmap statement
+  - Solution Architect should preserve enduring architecture posture and route slice-execution decomposition downward into planning artifacts unless the broader architecture itself changed
 - Product Owner and Solution Architect -> Technical Planner
   - Technical Planner should receive a candidate that has current product priority plus preserved architectural constraints, then turn it into a bounded slice rather than inventing both product priority and slice boundary inside execution planning
 - Technical Planner -> optional QA / Verification Lead
@@ -77,6 +79,8 @@ Shared artifacts and context that move across the scenario:
 
 - If the broader planning package is still unstable, route upstream rather than pretending slice selection can compensate for missing project-level direction.
 - If Product Owner cannot distinguish the next priority candidate from deferred or excluded work, keep that product-shaping work open rather than letting planning invent current priority.
+- If a statement is only true of the currently selected slice, route it into backlog, review, handoff, architecture, or planning artifacts rather than overwriting enduring product-direction or broader architecture posture.
+- If a statement is only true of slice execution order, workstream decomposition, or implementation readiness, route it into implementation-strategy or sequencing-and-dependencies rather than solution-architecture.
 - If the selected slice crosses important architectural seams or dependencies in a way the current architecture handoff does not support clearly, route through Solution Architect confirmation before the slice is treated as stable.
 - If the selected slice still represents too much of the project to act as one honest implementation boundary, keep slicing rather than handing the package downstream as though it were ready.
 - If early verification expectations materially shape what counts as a viable slice, invoke QA / Verification Lead before implementation begins.
@@ -116,6 +120,7 @@ Shared artifacts and context that move across the scenario:
 
 - Product Owner and Technical Planner boundaries can blur if product ordering starts drifting into technical slice decomposition without explicit architectural or planning support.
 - Solution Architect and Technical Planner boundaries can blur if slice selection quietly redefines architecture-sensitive seams.
+- Artifact-scope bleed is a specific risk here: a correct slice decision can still be packaged wrongly if enduring product or architecture artifacts are rewritten as if they only describe the current slice.
 - This scenario is easy to overread as sprint administration; it should stay focused on bounded slice shaping, not delivery-status tracking.
 - This scenario is also easy to underuse, with teams jumping directly from project planning to implementation; the explicit bounded-slice handoff should remain visible.
 - Optional QA / Verification Lead or Security / Compliance Specialist participation can become ceremonial if trigger conditions are not kept explicit, or too late if those branches are treated like trailing packaging instead of slice-shaping constraints.

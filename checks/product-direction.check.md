@@ -41,11 +41,13 @@ Validate that the product direction artifact makes the current outcome focus, ta
 ## Criteria
 
 - The decision scope is explicit.
+- The artifact makes clear whether it preserves enduring product direction or a narrower decision horizon.
 - Validated inputs are referenced clearly enough to explain why this direction exists now.
 - The product goal or outcome focus is clear and value-oriented.
 - Target users, stakeholders, or beneficiaries are identified.
 - Acceptance intent and behavioral guardrails are explicit when they materially affect downstream work.
 - The artifact does not present product-level acceptance framing as if it were already a full specification or verification plan.
+- The artifact does not collapse broader product direction into the currently selected delivery slice unless the broader product posture has actually changed.
 - Scope boundaries, non-goals, and material constraints are explicit.
 - Priority themes are concrete enough to guide downstream choices.
 - Open questions and decision needs are surfaced rather than hidden.

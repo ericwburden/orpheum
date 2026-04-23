@@ -28,6 +28,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand whether the current product package is ready for downstream solutioning or planning, what evidence supports that posture, what conditions or risks still matter, and what must happen next.
 
+This review should preserve the distinction between enduring product direction and the current prioritized slice or planning window.
+
 ## Related Checks
 
 - Primary: [`product-decision-review.check.md`](D:/Projects/orpheum/checks/product-decision-review.check.md)
@@ -72,6 +74,8 @@ Describe the material product risks, competing priorities, or stakeholder tensio
 
 Capture the most important semantic corrections surfaced by human review, especially when they changed product framing, scope boundaries, or acceptance intent.
 
+Call out explicitly when review prevented slice-specific language from overwriting broader product direction or other enduring upstream posture.
+
 ## Decision Changes Since Draft
 
 List the decisions that changed during review and what downstream consumers should now treat as current.
@@ -79,6 +83,8 @@ List the decisions that changed during review and what downstream consumers shou
 ## Cross-Artifact Reconciliation
 
 Record the cross-artifact updates required to keep the product package internally consistent after semantic review.
+
+Make scope-layer reconciliation explicit when enduring direction stays broad but backlog or planning artifacts narrow to the current slice.
 
 ## Conditions And Required Follow-Up
 

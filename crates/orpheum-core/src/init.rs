@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 use crate::catalog_runtime::runtime_catalog_resolution;
 use crate::error::{OrpheumError, OrpheumErrorCode};
 use crate::project_config::{CatalogSource, ProjectState, write_local_config};
+use crate::session::refresh_session_cli_version;
 
 const ORPHEUM_SKILL_BODY: &str = r#"---
 name: orpheum
@@ -172,6 +173,7 @@ pub fn init_project(
     } else {
         ProjectState::Initialized
     };
+    let _ = refresh_session_cli_version(project_root)?;
 
     let gitignore_file = project_root.join(".gitignore");
     let (gitignore_path, gitignore_updated) = if gitignore_file.exists() {

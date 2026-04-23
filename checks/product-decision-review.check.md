@@ -47,9 +47,10 @@ Validate that the product decision review artifact states the current decision p
 - The decision status is explicit rather than implied from tone.
 - Any scope, timing, evidence, or approval limits are clear.
 - The review makes it clear when product-priority readiness is not the same thing as implementation commitment, sprint commitment, or release approval.
+- The review preserves the distinction between enduring product direction and the currently selected slice or backlog window.
 - Key risks, tradeoffs, and stakeholder tensions are visible.
 - Semantic review findings and decision changes are explicit when review materially changed the package.
-- Cross-artifact reconciliation is visible when semantic review required updates elsewhere in the package.
+- Cross-artifact reconciliation is visible when semantic review required updates elsewhere in the package, especially when preventing slice-specific scope bleed into broader artifacts.
 - Conditions, required follow-up, and follow-up owners are explicit when the package is conditional or blocked.
 - Revisit triggers and the recommended next step are explicit.
 

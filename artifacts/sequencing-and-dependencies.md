@@ -27,6 +27,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand what should happen first, what can proceed in parallel, what work is blocked on external conditions, where the critical path sits, and what decision gates or integration checkpoints still matter.
 
+This artifact should express slice-local execution order and dependency handling without rewriting broader product or architecture artifacts in sequencing terms.
+
 ## Related Checks
 
 - Primary: [`sequencing-and-dependencies.check.md`](D:/Projects/agoge/checks/sequencing-and-dependencies.check.md)
@@ -40,6 +42,8 @@ Provide a short summary of the intended execution order and the main reason the 
 ## Workstream Order
 
 List the major workstreams or slices in their intended order, including the earliest useful implementation slice.
+
+Use this section to make the bounded current slice and its near-term successors explicit when the overall project direction remains broader upstream.
 
 ## Dependency Map
 

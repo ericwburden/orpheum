@@ -48,6 +48,7 @@ Validate that the implementation strategy artifact clearly expresses the intende
 - An explicit traceability map connects major slices or workstreams back to validated requirements, architecture, and handoff hotspots.
 - Planning assumptions and constraints are explicit.
 - The implementation approach and slice strategy are clear.
+- The artifact makes the current slice or execution decomposition explicit without rewriting broader product or architecture posture as though it were slice-local.
 - Major workstreams and their responsibilities are visible.
 - Enabling work and spikes are surfaced rather than hidden inside committed slices.
 - Slice exit criteria are explicit enough that downstream implementation or verification roles can tell when a slice is ready to hand off or close.

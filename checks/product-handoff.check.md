@@ -41,6 +41,7 @@ Validate that the product handoff artifact packages the current direction, prior
 
 - The current product direction and package contents are summarized clearly.
 - The current priority posture is explicit and properly scoped.
+- The handoff preserves any meaningful distinction between broader product direction and the narrower currently selected slice.
 - The handoff does not imply implementation commitment, sprint commitment, or release approval when further downstream authorization is still required.
 - Priority and acceptance guidance is strong enough for downstream consumers to preserve the product intent.
 - Locked decisions to preserve are explicit.

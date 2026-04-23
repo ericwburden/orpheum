@@ -28,6 +28,8 @@ This checked-in file is the canonical template definition. Create an instantiate
 
 This artifact is complete when a downstream reader can understand the intended system shape, why it was chosen, what constraints it must respect, where the important interfaces and contract assumptions lie, and where the major architectural risks and boundaries sit without inferring them from chat context.
 
+This artifact should preserve enduring system architecture across downstream slice-selection work unless the broader architecture itself has materially changed.
+
 ## Related Checks
 
 - Primary: [`solution-architecture.check.md`](D:/Projects/agoge/checks/solution-architecture.check.md)
@@ -37,6 +39,10 @@ This artifact is complete when a downstream reader can understand the intended s
 ## Problem And Scope
 
 Summarize the problem space and the part of the system this architecture is addressing.
+
+Make it explicit whether this scope is whole-system, subsystem, or another enduring architectural boundary that should outlive the current delivery slice.
+
+Do not silently narrow this artifact to the currently selected slice unless the broader architecture direction has actually changed.
 
 ## Input Context
 
@@ -49,6 +55,8 @@ List the decision drivers that shape the architecture, such as scale, reliabilit
 ## System Boundary
 
 Describe what is inside the solution boundary and what remains outside it.
+
+Keep whole-system or enduring subsystem boundaries distinct from the current implementation slice when those operate at different scope layers.
 
 ## Major Components And Responsibilities
 
@@ -89,6 +97,8 @@ For each decision, capture:
 ## Locked Constraints
 
 Capture the constraints, boundaries, or interface commitments that downstream roles should treat as non-negotiable unless a human explicitly reopens them.
+
+Use this section to preserve enduring architectural seams rather than recasting them as slice-local planning decisions.
 
 ## Specification Relationship
 

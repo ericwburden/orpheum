@@ -30,6 +30,7 @@ For this repository, this is the preferred direct-support skill for the Product 
 - State what product area, initiative set, horizon, user segment, or outcome focus is actually in scope.
 - Distinguish intended scope, excluded scope, and explicitly deferred scope.
 - Preserve value hypotheses, customer or business need, constraints, and trust-boundary-sensitive product concerns that materially shape the direction.
+- Preserve enduring product posture when the current work is only narrowing the next slice; do not rewrite whole-product direction in slice-local terms unless the broader product itself changed.
 
 ### 3) Author the product-priority posture cleanly
 
@@ -42,6 +43,8 @@ For the current product package, capture:
 - whether the package is ready for downstream shaping, ready with conditions, or blocked
 - any scope, timing, evidence, or approval limits on that posture
 - whether further planning, implementation commitment, or release approval is still required downstream
+
+Use backlog prioritization, review, and handoff artifacts to represent the currently selected slice when that slice is narrower than the enduring product direction.
 
 ### 4) Preserve acceptance guardrails without overclaiming
 
@@ -62,6 +65,7 @@ For the current product package, capture:
 - Do not present product-level acceptance framing as a substitute for full behavioral specification or verification planning.
 - Do not hide deferred scope, weak evidence, or unresolved tensions behind confident roadmap language.
 - Do not let product scope, decision horizon, or tradeoff logic stay implicit.
+- Do not let an active slice-planning scenario exert upward pressure that silently rewrites broader product-direction artifacts into slice-only artifacts.
 
 ## Supporting skills
 
