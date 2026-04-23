@@ -65,8 +65,8 @@ Treat these as derived views rather than source of truth:
 It:
 
 - installs this local skill at `.codex/skills/orpheum/SKILL.md`
-- validates a usable catalog source for the project
-- persists the resolved catalog root in `.codex/orpheum/config.json`
+- refreshes the project to use the embedded Orpheum catalog by default
+- persists an external catalog override in `.codex/orpheum/config.json` only when one is explicitly selected or discovered
 - writes a repo-root `ORPHEUM.md` onboarding file
 - appends `.orpheum/` to an existing `.gitignore` if that line is missing
 
@@ -159,14 +159,32 @@ pub fn init_project(
         }
     };
 
-    let resolution = runtime_catalog_resolution(explicit_catalog_root, project_root).map_err(|_| {
-        OrpheumError::coded(
-            OrpheumErrorCode::CatalogNotFound,
-            "unable to resolve an Orpheum catalog for this project; run `orpheum init --catalog <path>` to configure a catalog root, or set ORPHEUM_CATALOG as a compatibility fallback",
-        )
-    })?;
+    let resolution =
+        runtime_catalog_resolution(explicit_catalog_root, project_root).map_err(|_| {
+            OrpheumError::coded(
+                OrpheumErrorCode::CatalogNotFound,
+                "unable to resolve an Orpheum catalog for this project",
+            )
+        })?;
 
-    let local_config_file = write_local_config(project_root, &resolution.root)?;
+    let local_config_file = project_root
+        .join(".codex")
+        .join("orpheum")
+        .join("config.json");
+    match resolution.root.as_deref() {
+        Some(root) => {
+            write_local_config(project_root, root)?;
+        }
+        None => {
+            let config_dir = local_config_file.parent().expect("config dir");
+            if config_dir.exists() {
+                fs::create_dir_all(config_dir)?;
+            }
+            if local_config_file.exists() {
+                fs::remove_file(&local_config_file)?;
+            }
+        }
+    }
     let onboarding_file = project_root.join("ORPHEUM.md");
     let project_state = if project_root.join(".orpheum").exists() {
         ProjectState::Active
@@ -200,7 +218,7 @@ pub fn init_project(
             project_state,
             &skill_file,
             &local_config_file,
-            &resolution.root,
+            resolution.root.as_deref(),
             resolution.source,
         ),
     )?;
@@ -216,7 +234,7 @@ pub fn init_project(
         local_config_file,
         onboarding_file,
         catalog_source: resolution.source,
-        catalog_root: Some(resolution.root),
+        catalog_root: resolution.root,
     })
 }
 
@@ -225,7 +243,7 @@ fn build_onboarding_markdown(
     project_state: ProjectState,
     skill_file: &Utf8Path,
     local_config_file: &Utf8Path,
-    catalog_root: &Utf8Path,
+    catalog_root: Option<&Utf8Path>,
     catalog_source: CatalogSource,
 ) -> String {
     let next_commands = if matches!(project_state, ProjectState::Active) {
@@ -242,17 +260,32 @@ fn build_onboarding_markdown(
         ]
     };
 
+    let catalog_root_display = catalog_root
+        .map(|root| root.as_str().to_string())
+        .unwrap_or_else(|| "embedded-catalog".into());
+    let local_config_note = if catalog_root.is_some() {
+        format!(
+            "- External catalog override is recorded in `{}` and will take precedence over the embedded catalog.\n- Compatibility fallback: `ORPHEUM_CATALOG={}`\n",
+            local_config_file, catalog_root_display
+        )
+    } else {
+        format!(
+            "- No external catalog override is recorded in `{}`; Orpheum will use the embedded catalog by default.\n- Use `orpheum update --catalog <path>` if you want this project to follow a local development catalog instead.\n",
+            local_config_file
+        )
+    };
+
     format!(
-        "# ORPHEUM\n\n- Project root: `{}`\n- Project state: `{}`\n- Local skill: `{}`\n- Local catalog config: `{}`\n- Catalog root: `{}`\n- Catalog source: `{}`\n- Active session present: `{}`\n\n## Next Commands\n\n{}\n\n## Notes\n\n- `orpheum init` makes the project Orpheum-capable, but does not apply a scenario.\n- Later catalog-dependent commands will use the repo-local config before falling back to `ORPHEUM_CATALOG`.\n- Compatibility fallback: `ORPHEUM_CATALOG={}`\n",
+        "# ORPHEUM\n\n- Project root: `{}`\n- Project state: `{}`\n- Local skill: `{}`\n- Local catalog config: `{}`\n- Catalog root: `{}`\n- Catalog source: `{}`\n- Active session present: `{}`\n\n## Next Commands\n\n{}\n\n## Notes\n\n- `orpheum init` makes the project Orpheum-capable, but does not apply a scenario.\n- Catalog-dependent commands prefer explicit `--catalog`, then repo-local config, then `ORPHEUM_CATALOG`, then the embedded catalog.\n{}\n",
         project_root,
         project_state.as_str(),
         skill_file,
         local_config_file,
-        catalog_root,
+        catalog_root_display,
         catalog_source.as_str(),
         project_root.join(".orpheum").exists(),
         next_commands.join("\n"),
-        catalog_root,
+        local_config_note,
     )
 }
 

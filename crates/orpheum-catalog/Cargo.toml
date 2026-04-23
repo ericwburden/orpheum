@@ -1,0 +1,13 @@
+[package]
+name = "orpheum-catalog"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Embedded canonical Orpheum catalog bundled with the CLI."
+readme = "../../README.md"
+build = "build.rs"
+
+[build-dependencies]
+walkdir.workspace = true

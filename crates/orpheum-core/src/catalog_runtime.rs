@@ -6,16 +6,9 @@ use crate::catalog_loading::load_catalog_for_root;
 use crate::error::{OrpheumError, OrpheumErrorCode};
 use crate::project_config::{CatalogSource, valid_local_config_catalog_root};
 
-pub(crate) fn runtime_catalog_root(
-    explicit_root: Option<&Utf8Path>,
-    cwd: &Utf8Path,
-) -> Result<Utf8PathBuf, OrpheumError> {
-    runtime_catalog_resolution(explicit_root, cwd).map(|resolution| resolution.root)
-}
-
 #[derive(Debug, Clone)]
 pub(crate) struct CatalogResolution {
-    pub root: Utf8PathBuf,
+    pub root: Option<Utf8PathBuf>,
     pub source: CatalogSource,
 }
 
@@ -26,14 +19,14 @@ pub(crate) fn runtime_catalog_resolution(
     if let Some(root) = explicit_root {
         ensure_valid_catalog_root(root)?;
         return Ok(CatalogResolution {
-            root: root.to_path_buf(),
+            root: Some(root.to_path_buf()),
             source: CatalogSource::Explicit,
         });
     }
 
     if let Some(root) = valid_local_config_catalog_root(cwd) {
         return Ok(CatalogResolution {
-            root,
+            root: Some(root),
             source: CatalogSource::LocalConfig,
         });
     }
@@ -42,25 +35,12 @@ pub(crate) fn runtime_catalog_resolution(
         let root = Utf8PathBuf::from(root);
         ensure_valid_catalog_root(&root)?;
         return Ok(CatalogResolution {
-            root,
+            root: Some(root),
             source: CatalogSource::Env,
         });
     }
 
-    for candidate in runtime_catalog_candidates(cwd)? {
-        if let Some(root) = find_catalog_root_from(&candidate) {
-            ensure_valid_catalog_root(&root)?;
-            return Ok(CatalogResolution {
-                root,
-                source: CatalogSource::RuntimeDiscovery,
-            });
-        }
-    }
-
-    Err(OrpheumError::coded(
-        OrpheumErrorCode::CatalogNotFound,
-        "unable to locate the Orpheum catalog at runtime; run `orpheum init --catalog <path>` to configure this project, or set ORPHEUM_CATALOG as a compatibility fallback",
-    ))
+    resolve_from_candidates(runtime_catalog_candidates(cwd)?)
 }
 
 fn runtime_catalog_candidates(cwd: &Utf8Path) -> Result<Vec<Utf8PathBuf>, OrpheumError> {
@@ -77,6 +57,25 @@ fn runtime_catalog_candidates(cwd: &Utf8Path) -> Result<Vec<Utf8PathBuf>, Orpheu
         }
     }
     Ok(candidates)
+}
+
+fn resolve_from_candidates(
+    candidates: Vec<Utf8PathBuf>,
+) -> Result<CatalogResolution, OrpheumError> {
+    for candidate in candidates {
+        if let Some(root) = find_catalog_root_from(&candidate) {
+            ensure_valid_catalog_root(&root)?;
+            return Ok(CatalogResolution {
+                root: Some(root),
+                source: CatalogSource::RuntimeDiscovery,
+            });
+        }
+    }
+
+    Ok(CatalogResolution {
+        root: None,
+        source: CatalogSource::Embedded,
+    })
 }
 
 fn find_catalog_root_from(start: &Utf8Path) -> Option<Utf8PathBuf> {
@@ -99,4 +98,24 @@ fn is_catalog_root(path: &Utf8Path) -> bool {
 
 fn ensure_valid_catalog_root(root: &Utf8Path) -> Result<(), OrpheumError> {
     load_catalog_for_root(root).map(|_| ())
+}
+
+#[cfg(test)]
+mod tests {
+    use camino::Utf8PathBuf;
+
+    use super::resolve_from_candidates;
+    use crate::project_config::CatalogSource;
+
+    #[test]
+    fn falls_back_to_embedded_when_runtime_candidates_do_not_contain_a_catalog() {
+        let temp = tempfile::tempdir().expect("tempdir");
+        let candidate =
+            Utf8PathBuf::from_path_buf(temp.path().to_path_buf()).expect("utf8 temp path");
+
+        let resolution = resolve_from_candidates(vec![candidate]).expect("resolution");
+
+        assert_eq!(resolution.source, CatalogSource::Embedded);
+        assert!(resolution.root.is_none());
+    }
 }

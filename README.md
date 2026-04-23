@@ -8,7 +8,7 @@
 Current release documentation:
 
 - [CHANGELOG.md](C:/Users/ericw/Projects/orpheum/CHANGELOG.md)
-- [Orpheum 0.3.0 Release Notes](C:/Users/ericw/Projects/orpheum/docs/release/0.3.0.md)
+- [Orpheum 1.0.0 Release Notes](C:/Users/ericw/Projects/orpheum/docs/release/1.0.0.md)
 
 This repository now has two closely related responsibilities:
 
@@ -55,14 +55,15 @@ The CLI is intentionally metadata-first. It resolves scenarios from YAML frontma
 - [artifacts](C:/Users/ericw/Projects/orpheum/artifacts/README.md)
 - [checks](C:/Users/ericw/Projects/orpheum/checks/README.md)
 
-Catalog-dependent commands can locate the catalog in three ways:
+Catalog-dependent commands resolve the catalog in this order:
 
 - `--catalog <path>`
 - repo-local `.codex/orpheum/config.json` written by `orpheum init`
 - `ORPHEUM_CATALOG=<path>`
 - runtime discovery from the current working directory or executable location when you are working from the Orpheum repo itself
+- the embedded canonical catalog shipped with the installed CLI
 
-Commands like `init`, `status`, and `prompt current` are project-local and do not require catalog loading.
+That means `cargo install orpheum` now works on a clean machine without a separate catalog checkout. External catalog paths are override and development mechanisms, not a required second install step.
 
 If you are wiring Orpheum into a local agent workflow, use the dedicated consumer guide:
 
@@ -76,16 +77,16 @@ Install the published CLI:
 cargo install orpheum
 ```
 
-If you want to use the canonical catalog from this repository with an installed binary, point the CLI at this repo:
+List shipped scenarios from the embedded catalog:
+
+```bash
+orpheum scenario list
+```
+
+If you want a project to follow a local development catalog checkout instead, point Orpheum at that repo explicitly:
 
 ```bash
 orpheum --catalog /path/to/orpheum scenario list
-```
-
-or set:
-
-```bash
-ORPHEUM_CATALOG=/path/to/orpheum
 ```
 
 Build and run the CLI from this repository:
@@ -100,7 +101,7 @@ Initialize a consumer project for local agents:
 cargo run -p orpheum -- init
 ```
 
-Initialize a consumer project and persist an explicit catalog root:
+Initialize a consumer project and persist an explicit external catalog override:
 
 ```bash
 cargo run -p orpheum -- init --catalog /path/to/orpheum
@@ -138,7 +139,7 @@ orpheum check run
 orpheum doctor
 ```
 
-`orpheum init` installs or refreshes a project-local skill at `.codex/skills/orpheum/SKILL.md`, persists a resolved catalog root in `.codex/orpheum/config.json`, writes a repo-root `ORPHEUM.md` onboarding file, and adds `.orpheum/` to an existing `.gitignore` when that entry is missing.
+`orpheum init` installs or refreshes a project-local skill at `.codex/skills/orpheum/SKILL.md`, uses the embedded catalog by default, persists `.codex/orpheum/config.json` only when an external catalog override is active, writes a repo-root `ORPHEUM.md` onboarding file, and adds `.orpheum/` to an existing `.gitignore` when that entry is missing.
 
 `orpheum update` is the explicit refresh path for existing projects. Use it when a newer CLI warns that local Orpheum guidance should be refreshed.
 
@@ -161,6 +162,7 @@ For designing and hardening scenarios themselves, see [Scenario Implementation](
 ## Repository Structure
 
 - [crates/orpheum-cli](C:/Users/ericw/Projects/orpheum/crates/orpheum-cli) contains the `orpheum` binary and command-line interface.
+- [crates/orpheum-catalog](C:/Users/ericw/Projects/orpheum/crates/orpheum-catalog) contains the embedded canonical catalog bundled into the shipped CLI.
 - [crates/orpheum-core](C:/Users/ericw/Projects/orpheum/crates/orpheum-core) contains catalog loading, dependency resolution, session management, prompt generation, checks, and doctor logic.
 - [scenarios](C:/Users/ericw/Projects/orpheum/scenarios/README.md) contains reusable multi-role SDLC scenarios.
 - [roles](C:/Users/ericw/Projects/orpheum/roles/README.md) contains reusable role packages.

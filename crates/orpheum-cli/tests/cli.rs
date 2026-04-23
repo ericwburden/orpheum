@@ -35,6 +35,14 @@ fn copy_expected_artifacts(project_root: &std::path::Path) {
     }
 }
 
+fn copied_binary_path(destination_root: &std::path::Path) -> std::path::PathBuf {
+    let source = assert_cmd::cargo::cargo_bin("orpheum");
+    let file_name = source.file_name().expect("binary file name");
+    let destination = destination_root.join(file_name);
+    fs::copy(&source, &destination).expect("binary copied");
+    destination
+}
+
 fn set_session_cli_version(project_root: &std::path::Path, version: Option<&str>) {
     let session_file = project_root.join(".orpheum").join("session.json");
     let mut session: Value =
@@ -64,6 +72,21 @@ fn scenario_list_works() {
         .assert()
         .success()
         .stdout(predicate::str::contains("project-planning"));
+}
+
+#[test]
+fn scenario_list_works_with_embedded_catalog_when_binary_is_outside_repo() {
+    let install_root = tempdir().expect("tempdir");
+    let project = tempdir().expect("tempdir");
+    let binary = copied_binary_path(install_root.path());
+
+    Command::new(binary)
+        .current_dir(project.path())
+        .env_remove("ORPHEUM_CATALOG")
+        .args(["scenario", "list", "--json"])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("\"id\": \"project-planning\""));
 }
 
 #[test]
@@ -291,6 +314,32 @@ fn init_uses_runtime_discovery_when_no_other_catalog_source_exists() {
 }
 
 #[test]
+fn init_uses_embedded_catalog_when_binary_is_outside_repo() {
+    let install_root = tempdir().expect("tempdir");
+    let project = tempdir().expect("tempdir");
+    let binary = copied_binary_path(install_root.path());
+
+    Command::new(binary)
+        .current_dir(project.path())
+        .env_remove("ORPHEUM_CATALOG")
+        .args(["init", "--json"])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("\"catalog_source\": \"embedded\""))
+        .stdout(predicate::str::contains("\"catalog_root\": null"));
+
+    assert!(
+        !project
+            .path()
+            .join(".codex")
+            .join("orpheum")
+            .join("config.json")
+            .exists(),
+        "embedded catalog should not persist an external config file"
+    );
+}
+
+#[test]
 fn check_run_fails_when_artifacts_missing() {
     let project = tempdir().expect("tempdir");
     let project_path = project.path().to_string_lossy().to_string();
@@ -426,7 +475,9 @@ fn status_warns_when_cli_is_newer_than_recorded_session_version() {
         .stderr(predicate::str::contains(
             "Run `orpheum update` to refresh local Orpheum guidance",
         ))
-        .stdout(predicate::str::contains("\"scenario_id\": \"project-planning\""));
+        .stdout(predicate::str::contains(
+            "\"scenario_id\": \"project-planning\"",
+        ));
 }
 
 #[test]
@@ -493,10 +544,10 @@ fn status_warns_when_session_has_no_recorded_cli_version() {
         .args(["status", "--json"])
         .assert()
         .success()
-        .stderr(predicate::str::contains(
-            "does not record a CLI version",
-        ))
-        .stdout(predicate::str::contains("\"scenario_id\": \"project-planning\""));
+        .stderr(predicate::str::contains("does not record a CLI version"))
+        .stdout(predicate::str::contains(
+            "\"scenario_id\": \"project-planning\"",
+        ));
 }
 
 #[test]

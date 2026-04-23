@@ -20,10 +20,13 @@ pub fn run_doctor(
     };
     let (catalog_root, catalog_source, counts, mut warnings) = if let Some(resolution) = resolution
     {
-        let catalog = Catalog::load(&resolution.root)?;
+        let catalog = match resolution.root.as_deref() {
+            Some(root) => Catalog::load(root)?,
+            None => Catalog::load_embedded()?,
+        };
         let health = catalog.health(project_root);
         (
-            Some(catalog.paths.root.clone()),
+            resolution.root.clone(),
             resolution.source,
             health.counts,
             health.warnings,
@@ -82,9 +85,11 @@ pub fn run_doctor(
 fn recovery_commands(project_root: &Utf8Path, catalog_root: Option<&Utf8Path>) -> Vec<String> {
     let mut commands = Vec::new();
     if let Some(root) = catalog_root {
-        commands.push(format!("orpheum init --catalog {}", root));
+        commands.push(format!("orpheum update --catalog {}", root));
     } else {
-        commands.push("orpheum init --catalog <path-to-orpheum-catalog>".into());
+        commands.push("orpheum update".into());
+        commands.push("orpheum init".into());
+        commands.push("orpheum update --catalog <path-to-orpheum-catalog>".into());
         commands.push("ORPHEUM_CATALOG=<path-to-orpheum-catalog>".into());
         commands.push(format!(
             "orpheum --catalog <path-to-orpheum-catalog> scenario list --json"

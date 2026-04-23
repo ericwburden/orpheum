@@ -9,6 +9,7 @@ use crate::error::OrpheumError;
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum CatalogSource {
+    Embedded,
     Explicit,
     LocalConfig,
     Env,
@@ -19,6 +20,7 @@ pub enum CatalogSource {
 impl CatalogSource {
     pub fn as_str(self) -> &'static str {
         match self {
+            Self::Embedded => "embedded",
             Self::Explicit => "explicit",
             Self::LocalConfig => "local_config",
             Self::Env => "env",

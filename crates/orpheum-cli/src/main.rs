@@ -111,7 +111,8 @@ fn run(cli: Cli) -> Result<(), OrpheumError> {
     let cwd = current_dir_utf8()?;
     let catalog_arg = cli.catalog.as_deref();
 
-    let should_check_refresh_notice = !matches!(cli.command, Commands::Init(_) | Commands::Update(_));
+    let should_check_refresh_notice =
+        !matches!(cli.command, Commands::Init(_) | Commands::Update(_));
     if should_check_refresh_notice {
         emit_refresh_notice_if_needed(&cwd)?;
     }
@@ -339,6 +340,9 @@ fn print_doctor(report: &DoctorReport) {
     println!("Catalog source: {}", report.catalog_source.as_str());
     match &report.catalog_root {
         Some(root) => println!("Catalog root: {}", root),
+        None if report.catalog_source.as_str() == "embedded" => {
+            println!("Catalog root: embedded-catalog")
+        }
         None => println!("Catalog root: unresolved"),
     }
     println!("Project root: {}", report.project_root);

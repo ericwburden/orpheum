@@ -9,9 +9,13 @@ use crate::catalog::{
     ArtifactDef, ArtifactEntry, Catalog, CatalogPaths, CheckDef, CheckEntry, RoleDef, RoleEntry,
     ScenarioDef, ScenarioEntry, WorkflowDef, WorkflowEntry,
 };
-use crate::catalog_runtime::runtime_catalog_root;
+use crate::catalog_runtime::runtime_catalog_resolution;
 use crate::error::{OrpheumError, OrpheumErrorCode};
 use crate::frontmatter::parse_frontmatter;
+use crate::project_config::CatalogSource;
+use orpheum_catalog::{EmbeddedCatalogFile, embedded_catalog_files};
+
+const EMBEDDED_CATALOG_ROOT: &str = "embedded-catalog";
 
 impl CatalogPaths {
     pub fn discover(root: impl AsRef<Utf8Path>) -> Result<Self, OrpheumError> {
@@ -33,6 +37,19 @@ impl CatalogPaths {
             skills: root.join("skills"),
         })
     }
+
+    pub fn embedded() -> Self {
+        let root = Utf8PathBuf::from(EMBEDDED_CATALOG_ROOT);
+        Self {
+            scenarios: root.join("scenarios"),
+            workflows: root.join("workflows"),
+            roles: root.join("roles"),
+            artifacts: root.join("artifacts"),
+            checks: root.join("checks"),
+            skills: root.join("skills"),
+            root,
+        }
+    }
 }
 
 impl Catalog {
@@ -40,8 +57,19 @@ impl Catalog {
         explicit_root: Option<&Utf8Path>,
         cwd: &Utf8Path,
     ) -> Result<Self, OrpheumError> {
-        let root = runtime_catalog_root(explicit_root, cwd)?;
-        Self::load(root)
+        let resolution = runtime_catalog_resolution(explicit_root, cwd)?;
+        match resolution.source {
+            CatalogSource::Embedded => Self::load_embedded(),
+            _ => {
+                let root = resolution.root.ok_or_else(|| {
+                    OrpheumError::coded(
+                        OrpheumErrorCode::CatalogNotFound,
+                        "resolved catalog source did not provide a filesystem root",
+                    )
+                })?;
+                Self::load(root)
+            }
+        }
     }
 
     pub fn load(root: impl AsRef<Utf8Path>) -> Result<Self, OrpheumError> {
@@ -139,6 +167,104 @@ impl Catalog {
         catalog.validate()?;
         Ok(catalog)
     }
+
+    pub fn load_embedded() -> Result<Self, OrpheumError> {
+        let paths = CatalogPaths::embedded();
+        let documents = embedded_catalog_files();
+        let scenarios = load_embedded_map::<ScenarioDef, ScenarioEntry, _, _>(
+            &paths,
+            "scenarios",
+            documents,
+            |path, metadata, body| ScenarioEntry {
+                metadata,
+                path,
+                body,
+            },
+            |path| {
+                path.extension() == Some("md")
+                    && path
+                        .file_name()
+                        .is_some_and(|name| name.ends_with(".definition.md"))
+            },
+        )?;
+        let workflows = load_embedded_map::<WorkflowDef, WorkflowEntry, _, _>(
+            &paths,
+            "workflows",
+            documents,
+            |path, metadata, body| WorkflowEntry {
+                metadata,
+                path,
+                body,
+            },
+            |path| !matches!(path.file_name(), Some("README.md" | "workflow.template.md")),
+        )?;
+        let roles = load_embedded_map::<RoleDef, RoleEntry, _, _>(
+            &paths,
+            "roles",
+            documents,
+            |path, metadata, body| RoleEntry {
+                metadata,
+                path,
+                body,
+            },
+            |path| !matches!(path.file_name(), Some("README.md" | "role.template.md")),
+        )?;
+        let artifacts = load_embedded_map::<ArtifactDef, ArtifactEntry, _, _>(
+            &paths,
+            "artifacts",
+            documents,
+            |path, metadata, body| ArtifactEntry {
+                metadata,
+                path,
+                body,
+            },
+            |path| !matches!(path.file_name(), Some("README.md" | "artifact.template.md")),
+        )?;
+        let checks = load_embedded_map::<CheckDef, CheckEntry, _, _>(
+            &paths,
+            "checks",
+            documents,
+            |path, metadata, body| CheckEntry {
+                metadata,
+                path,
+                body,
+            },
+            |path| {
+                path.extension() == Some("md")
+                    && path
+                        .file_name()
+                        .is_some_and(|name| name.ends_with(".check.md"))
+            },
+        )?;
+
+        let skills = documents
+            .iter()
+            .filter_map(|document| {
+                let path = Utf8Path::new(document.path);
+                if path.parent() == Some(Utf8Path::new("skills"))
+                    || path.file_name() != Some("SKILL.md")
+                {
+                    return None;
+                }
+                path.parent()
+                    .and_then(|parent| parent.file_name())
+                    .map(str::to_string)
+            })
+            .collect::<BTreeSet<_>>();
+
+        let catalog = Self {
+            paths,
+            scenarios,
+            workflows,
+            roles,
+            artifacts,
+            checks,
+            skills,
+        };
+
+        catalog.validate()?;
+        Ok(catalog)
+    }
 }
 
 pub fn load_catalog_for_root(root: &Utf8Path) -> Result<Catalog, OrpheumError> {
@@ -182,6 +308,43 @@ where
         map.insert(id, make_entry(path, metadata, body));
     }
 
+    Ok(map)
+}
+
+fn load_embedded_map<T, E, F, P>(
+    paths: &CatalogPaths,
+    top_dir: &str,
+    documents: &[EmbeddedCatalogFile],
+    make_entry: F,
+    predicate: P,
+) -> Result<BTreeMap<String, E>, OrpheumError>
+where
+    T: for<'de> Deserialize<'de> + Serialize,
+    F: Fn(Utf8PathBuf, T, String) -> E,
+    P: Fn(&Utf8Path) -> bool,
+{
+    let mut map = BTreeMap::new();
+    for document in documents {
+        let relative_path = Utf8Path::new(document.path);
+        if relative_path
+            .components()
+            .next()
+            .map(|component| component.as_str())
+            != Some(top_dir)
+        {
+            continue;
+        }
+        if !predicate(relative_path) {
+            continue;
+        }
+
+        let (metadata, body) = parse_frontmatter::<T>(document.contents)?;
+        let id = extract_id(&metadata)?;
+        map.insert(
+            id,
+            make_entry(paths.root.join(relative_path), metadata, body),
+        );
+    }
     Ok(map)
 }
 

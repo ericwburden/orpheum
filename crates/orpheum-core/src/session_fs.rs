@@ -88,7 +88,10 @@ pub fn refresh_session_cli_version(project_root: &Utf8Path) -> Result<bool, Orph
     }
 
     manifest.last_orpheum_cli_version = Some(current);
-    fs::write(&files.session_file, serde_json::to_string_pretty(&manifest)?)?;
+    fs::write(
+        &files.session_file,
+        serde_json::to_string_pretty(&manifest)?,
+    )?;
     Ok(true)
 }
 

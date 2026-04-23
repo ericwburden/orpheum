@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2026-04-23
+
+### Added
+
+- New `crates/orpheum-catalog` crate that bundles the canonical Orpheum catalog directly into the shipped CLI.
+- CLI integration tests that simulate an installed binary running outside the Orpheum repo to verify embedded-catalog behavior.
+- Release notes for this major version at `docs/release/1.0.0.md`.
+
+### Changed
+
+- Bumped the workspace crates from `0.3.0` to `1.0.0`.
+- Catalog resolution now falls back to the embedded shipped catalog when no explicit path, local config, environment override, or runtime-discovered repo checkout is available.
+- `orpheum init`, `orpheum update`, `orpheum scenario ...`, and `orpheum doctor` now work on a clean machine without requiring a separate catalog checkout.
+- `orpheum init` and `orpheum update` now persist `.codex/orpheum/config.json` only when an external catalog override is selected; embedded-catalog projects do not need local config state.
+- Consumer-facing docs and onboarding guidance now describe external catalog paths as override/development mechanisms rather than mandatory prerequisites.
+
+### Fixed
+
+- The no-catalog recovery path for installed binaries no longer dead-ends with `CATALOG_NOT_FOUND` on fresh machines.
+- `orpheum update` now has a meaningful default recovery path because the CLI always has a built-in catalog available.
+
 ## [0.3.0] - 2026-04-23
 
 ### Added
